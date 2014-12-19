@@ -1,0 +1,23 @@
+#container {
+	padding-left: 25%;
+	padding-top: 100px;
+	display: inline-block;
+}
+#back {
+	float: right;
+	padding: 10px;
+}
+a {
+	color: white;
+	font-size: 20px;
+	text-decoration: none;
+}
+html, body {
+	color: white;
+	font-family: arial;
+	padding: 0px;
+	margin: 0px;
+	cursor: default;
+	height: 100%;
+	background-color: rgb(0,121,254);
+}
