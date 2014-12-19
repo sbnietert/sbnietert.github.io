@@ -1,0 +1,19 @@
+body{background-image:url(../img/wood.jpg);font-family:arial;background-attachment: fixed;}
+body,html{padding:0px;margin:0px;}
+#header{text-align:center;width:100%;overflow:hidden;}
+#content img.pic{float:right;width:30%;margin:5px;margin-left:20px;}
+#header div{padding-left:10px;padding-right:10px;padding-top:10px;}
+#header img{width:100%;}
+#navigation{text-align:center;width:100%;margin-top:-3px;background-color:#3c3361;padding-top:12px;padding-bottom:12px;border-bottom:2px solid orange;border-top:2px solid orange;text-shadow:0px 0px 3px black;color:white;font-size:medium;}
+#navigation a{text-decoration:none;color:white}
+#content #holder{padding:10px;overflow:hidden;color:black;background-color:white;text-align:justify;}
+#holder p{padding-left:15px;margin:0px;font-size:16px;}
+#footer{position:relative;width:79%;left:11%;top:5px;color:white;font-size:14px;padding-bottom:5px;}
+#footer p{margin:0px;}
+#god{margin-top:10px;width:80%;margin-left:10%;position:relative;}
+#content{padding-left:10px;padding-right:10px;padding-bottom:10px;}
+#container{position:relative;z-index:5;    border-bottom:5px solid #3c3361;}
+#shadow{position:absolute;top:0px;left:0px;width:100%;height:100%;background-color:white;z-index:1;/* These three lines are for transparency in all browsers. */-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=40)";filter: alpha(opacity=40);opacity:0.40;}
+.oldie #shadow{display:none;}
+#content h1{font-size:150%;text-align:left;border-bottom:2px solid orange;margin-bottom:10px;}
+p.contact{margin-left:15px;}

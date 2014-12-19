@@ -1,0 +1,45 @@
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,textarea,p,blockquote,th,td { 
+    margin:0;
+    padding:0;
+}
+table {
+    border-collapse:collapse;
+    border-spacing:0;
+}
+fieldset,img { 
+    border:0;
+}
+address,caption,cite,code,dfn,em,strong,th,var {
+    font-style:normal;
+    font-weight:normal;
+}
+ol,ul {
+    list-style:none;
+}
+caption,th {
+    text-align:left;
+}
+h1,h2,h3,h4,h5,h6 {
+    font-size:100%;
+    font-weight:normal;
+}
+q:before,q:after {
+    content:'';
+}
+abbr,acronym { border:0;}
+
+body{background-image:url(https://scontent-a-lga.xx.fbcdn.net/hphotos-xpa1/v/t1.0-9/10849956_974559965891465_4439363122813078102_n.jpg?oh=8c43606efd337bb4955b1aae8d4eba7d&oe=550868C9);font-family:arial;background-attachment: fixed;}
+body,html{padding:0px;margin:0px;}
+#header{text-align:center;width:100%;overflow:hidden;}
+#header div{padding-left:10px;padding-right:10px;padding-top:10px;}
+#header img{width:100%;}
+#navigation{text-align:center;width:100%;margin-top:-4px;background-color:#3c3361;padding-top:12px;padding-bottom:12px;border-bottom:2px solid orange;border-top:2px solid orange;text-shadow:0px 0px 3px black;color:white;font-size:medium;}
+#navigation a{text-decoration:none;color:white}
+#footer{position:relative;width:79%;left:11%;top:5px;color:white;font-size:14px;padding-bottom:5px;}
+#god{margin-top:10px;width:80%;margin-left:10%;position:relative;}
+#content{padding-left:10px;padding-right:10px;padding-bottom:10px;}
+#container{position:relative;z-index:5;    border-bottom:5px solid #3c3361;}
+#shadow{position:absolute;top:0px;left:0px;width:100%;height:100%;background-color:white;z-index:1;/* These three lines are for transparency in all browsers. */-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=40)";filter: alpha(opacity=40);opacity:0.40;}
+#content h1{font-size:150%;text-align:left;border-bottom:2px solid orange;margin-bottom:10px;}
+#content #holder{padding:10px;overflow:hidden;color:black;background-color:white}
+.ie6 #shadow{display:none;}

@@ -1,0 +1,6 @@
+#custom h2{background-color:#485C89; color:white; padding:5px;margin-bottom:5px;border-radius:10px;-webkit-border-radius:10px;-moz-border-radius:10px;margin-top:5px;}
+#custom{margin-bottom:5px;}
+#restored h2{background-color:#485C89; color:white; padding:5px;margin-bottom:5px;border-bottom-right-radius:10px;-moz-border-radius-bottomright:10px;border-bottom-left-radius:10px;-moz-border-radius-bottomleft:10px;-webkit-border-bottom-right-radius:10px;-webkit-border-bottom-left-radius:10px;}
+#content img{border:2px solid #485C89; display: inline;height:100px;margin: 4px 2px 0;text-align: center;padding:2px;}
+#content #holder{padding:10px;overflow:hidden;color:black;background-color:white}
+#content{text-align:center;}
