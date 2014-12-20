@@ -172,12 +172,13 @@ function start() {
 	var fb = new Firebase('https://wheel-of-fortune.firebaseio.com/');
 	fb.on('value', function(data) {
 		show_random_phrase(board, data.val());
-		$(document.body).unbind('click').click(function(e) {
+		var reset = function(e) {
 			if(animation.in_progress)
 				end_animation();
 			else
 				show_random_phrase(board, data.val());
-		});
+		};
+		$(document.body).unbind('click').unbind('touchend').click(reset).bind('touchend', reset);
 	});
 };
 
@@ -186,7 +187,6 @@ function cancel_select(e) {
 	if(e.preventDefault) e.preventDefault();
 	e.cancelBubble=true;
 	e.returnValue=false;
-   	console.log('what...');
 }
 
 $(document.body).bind('dragstart', cancel_select).bind('mousedown', cancel_select).bind('mousemove', cancel_select).ready(start);
