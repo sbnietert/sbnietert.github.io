@@ -172,7 +172,7 @@ function start() {
 	var fb = new Firebase('https://wheel-of-fortune.firebaseio.com/');
 	fb.on('value', function(data) {
 		show_random_phrase(board, data.val());
-		$(document.body).unbind().click(function(e) {
+		$(document.body).unbind('click').click(function(e) {
 			if(animation.in_progress)
 				end_animation();
 			else
@@ -183,9 +183,10 @@ function start() {
 
 function cancel_select(e) { 
 	if(e.stopPropagation) e.stopPropagation();
-    if(e.preventDefault) e.preventDefault();
-    e.cancelBubble=true;
-    e.returnValue=false;
+	if(e.preventDefault) e.preventDefault();
+	e.cancelBubble=true;
+	e.returnValue=false;
+   	console.log('what...');
 }
 
 $(document.body).bind('dragstart', cancel_select).bind('mousedown', cancel_select).bind('mousemove', cancel_select).ready(start);
