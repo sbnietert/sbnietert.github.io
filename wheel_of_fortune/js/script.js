@@ -172,14 +172,17 @@ function start() {
 	var fb = new Firebase('https://wheel-of-fortune.firebaseio.com/');
 	fb.on('value', function(data) {
 		show_random_phrase(board, data.val());
-		var startTime = Date.now();
+		var startTime = (new Date()).getTime();
 		var reset = function(e) {
-			if(Date.now() - startTime < 200) return;
+			if((new Date()).getTime() - startTime < 200) {
+				startTime = (new Date()).getTime();
+				return;
+			}
 			if(animation.in_progress)
 				end_animation();
 			else
 				show_random_phrase(board, data.val());
-			startTime = Date.now();
+			startTime = (new Date()).getTime();
 		};
 		$(document.body).unbind('click').unbind('touchend').click(reset).bind('touchend', reset);
 	});
