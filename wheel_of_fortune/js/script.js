@@ -172,11 +172,14 @@ function start() {
 	var fb = new Firebase('https://wheel-of-fortune.firebaseio.com/');
 	fb.on('value', function(data) {
 		show_random_phrase(board, data.val());
+		var startTime = Date.now();
 		var reset = function(e) {
+			if(Date.now() - startTime < 200) return;
 			if(animation.in_progress)
 				end_animation();
 			else
 				show_random_phrase(board, data.val());
+			startTime = Date.now();
 		};
 		$(document.body).unbind('click').unbind('touchend').click(reset).bind('touchend', reset);
 	});
