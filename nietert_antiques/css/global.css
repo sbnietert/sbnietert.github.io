@@ -28,7 +28,7 @@ q:before,q:after {
 }
 abbr,acronym { border:0;}
 
-body{background-image:url(https://scontent-a-lga.xx.fbcdn.net/hphotos-xpa1/v/t1.0-9/10849956_974559965891465_4439363122813078102_n.jpg?oh=8c43606efd337bb4955b1aae8d4eba7d&oe=550868C9);font-family:arial;background-attachment: fixed;}
+body{background-image:url(img/wood.jpg);font-family:arial;background-attachment: fixed;}
 body,html{padding:0px;margin:0px;}
 #header{text-align:center;width:100%;overflow:hidden;}
 #header div{padding-left:10px;padding-right:10px;padding-top:10px;}
