@@ -97,7 +97,7 @@ var RT;
                 data: this.sceneData
             });
         };
-        SceneViewer.scenePathPrefix = 'scenes/';
+        SceneViewer.scenePathPrefix = '../scenes/';
         SceneViewer.scenes = {
             'Menger Sponge': 'mengerSponge.json',
             'Models': 'models.json',
