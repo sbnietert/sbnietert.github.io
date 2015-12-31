@@ -1632,7 +1632,6 @@ var RT;
 var RT;
 (function (RT) {
     var rayTracer = new RT.RayTracer();
-    var targetOrigin = 'index.html';
     onmessage = function (e) {
         var message = e.data;
         if (message.command == 'load scene') {
@@ -1646,7 +1645,7 @@ var RT;
                         subpixelGridSize: scene.renderSettings.subpixelGridSize,
                         recursionDepth: scene.renderSettings.recursionDepth
                     }
-                }, targetOrigin);
+                });
             });
         }
         else if (message.command == 'render') {
@@ -1661,11 +1660,11 @@ var RT;
                         rowColors: rowColors,
                         rowIndex: row
                     }
-                }, targetOrigin);
+                });
             });
             postMessage({
                 command: 'render complete'
-            }, targetOrigin);
+            });
         }
     };
 })(RT || (RT = {}));
