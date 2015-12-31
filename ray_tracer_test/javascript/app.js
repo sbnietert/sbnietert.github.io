@@ -35,7 +35,7 @@ var RT;
             this.canvas = canvas;
             this.scene = 'Models';
             this.sceneData = new SceneData();
-            this.gui = new dat.GUI();
+            this.gui = new dat.GUI({ width: 400 });
             this.rayTracer = new Worker('javascript/worker.js');
             this.ctx = canvas.getContext('2d');
             var sceneFileController = this.gui.add(this, 'scene', Object.keys(RT.SceneViewer.scenes));
