@@ -32,13 +32,8 @@
   ],
   "materials": {
     "red": {
-      "type": "solid-color",
+      "type": "simple",
       "color": [ 0.8, 0, 0 ]
-    },
-    "glass": {
-      "type": "solid-color",
-      "color": [ 0, 0, 0 ],
-      "refraction": 1.0
     },
     "diamond-checkerboard": {
       "type": "xz-diamond-checkered",
@@ -47,16 +42,16 @@
       "reflection": 0.1
     },
     "shiny-green": {
-      "type": "solid-color",
+      "type": "simple",
       "color": [ 0.1, 0.8, 0.2 ],
       "reflection": 0.3
     },
     "yellow": {
-      "type": "solid-color",
+      "type": "simple",
       "color": [ 0.8, 0.9, 0 ]
     },
     "cyan": {
-      "type": "solid-color",
+      "type": "simple",
       "color": [ 0, 0.9, 0.8 ]
     }
   },

@@ -28,21 +28,13 @@
     }
   ],
   "materials": {
-    "glass": {
-      "type": "solid-color",
-      "refraction": 1
-    },
-    "mirror": {
-      "type": "solid-color",
-      "reflection": 1
-    },
     "diamond-checkerboard": {
       "type": "xz-diamond-checkered",
       "color1": [ 0.96, 0.4, 0.2 ],
       "color2": [ 0.32, 0.18, 0.5 ]
     },
     "shiny-grey": {
-      "type": "solid-color",
+      "type": "simple",
       "color": [ 0.5, 0.5, 0.5 ],
       "reflection": 0.8
     }
@@ -51,7 +43,7 @@
     {
       "type": "mesh",
       "value": {
-        "filePath": "models/teapot.off",
+        "filePath": "../models/teapot.off",
         "normalInterpolation": true,
         "material": "shiny-grey"
       }
@@ -59,7 +51,7 @@
     {
       "type": "mesh",
       "value": {
-        "filePath": "models/goblet.off",
+        "filePath": "../models/goblet.off",
         "normalInterpolation": true,
         "material": "glass"
       }
