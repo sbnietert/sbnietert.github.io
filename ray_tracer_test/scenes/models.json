@@ -43,7 +43,7 @@
     {
       "type": "mesh",
       "value": {
-        "filePath": "models/teapot.off",
+        "filePath": "../models/teapot.off",
         "normalInterpolation": true,
         "material": "shiny-grey"
       }
@@ -51,7 +51,7 @@
     {
       "type": "mesh",
       "value": {
-        "filePath": "models/goblet.off",
+        "filePath": "../models/goblet.off",
         "normalInterpolation": true,
         "material": "glass"
       }
