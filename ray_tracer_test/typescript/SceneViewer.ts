@@ -9,7 +9,7 @@ module RT {
     }
 
     export class SceneViewer {
-        private static scenePathPrefix = 'scenes/';
+        private static scenePathPrefix = '../scenes/';
         private static scenes: Dictionary<string> = {
             'Menger Sponge': 'mengerSponge.json',
             'Models': 'models.json',
@@ -20,8 +20,8 @@ module RT {
         private ctx: CanvasRenderingContext2D;
         private scene = 'Models';
         private sceneData = new SceneData();
-        private gui = new dat.GUI();
-        private rayTracer = new Worker('rayTracerWorker.js');
+        private gui = new dat.GUI({ width: 400 });
+        private rayTracer = new Worker('worker.js');
         private renderButtonController: dat.GUIController;
 
         constructor(private canvas: HTMLCanvasElement) {
