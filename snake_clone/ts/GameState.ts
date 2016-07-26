@@ -4,6 +4,7 @@ module Snake {
 
         constructor(ctx: GameContext) {
             this.ctx = ctx;
+            this.randomizeBorderColors();
         }
 
         protected fillScreen(color: string): void {
@@ -31,14 +32,32 @@ module Snake {
              this.drawArt(art, rowOffset, colOffset, color);
         }
 
+        private borderColors: string[] = [];
+
+        protected randomizeBorderColors(): void {
+            var c = 0;
+
+            for(var i = 0; i < this.ctx.rows; i++, c += 2) {
+                this.borderColors[c] = Util.randColor();
+                this.borderColors[c+1] = Util.randColor();
+            }
+            
+            for(var j = 0; j < this.ctx.cols; j++, c += 2) {
+                this.borderColors[c] = Util.randColor();
+                this.borderColors[c+1] = Util.randColor();
+            }
+        }
+
         protected drawBorder(type = 'checker'): void {
-            for(var i = 0; i < this.ctx.rows; i++) {
+            var c = 0;
+
+            for(var i = 0; i < this.ctx.rows; i++, c += 2) {
 
                 var color1: string;
                 var color2: string;
                 if(type == 'colorful') {
-                    color1 = Util.randColor();
-                    color2 = Util.randColor();
+                    color1 = this.borderColors[c];
+                    color2 = this.borderColors[c+1];
                 } else if (type == 'checker') {
                     color1 = (i % 2) ? 'grey' : 'lightgrey';
                     color2 = ((this.ctx.cols - 1 + i) % 2) ? 'grey' : 'lightgrey';
@@ -50,13 +69,13 @@ module Snake {
                 this.drawSquare([i, this.ctx.cols - 1], color2);
             }
             
-            for(var j = 0; j < this.ctx.cols; j++) {
+            for(var j = 0; j < this.ctx.cols; j++, c += 2) {
 
                 var color1: string;
                 var color2: string;
                 if(type == 'colorful') {
-                    color1 = Util.randColor();
-                    color2 = Util.randColor();
+                    color1 = this.borderColors[c];
+                    color2 = this.borderColors[c+1];
                 } else if (type == 'checker') {
                     color1 = (j % 2) ? 'grey' : 'lightgrey';
                     color2 = ((this.ctx.rows - 1 + j) % 2) ? 'grey' : 'lightgrey';

@@ -40,6 +40,7 @@ module Snake {
 
         public draw(): void {
             this.fillScreen('white');
+            this.drawBorder('black');
             this.drawCenteredArt(this.numberArt[this.currentArt], 'black');
         }
 

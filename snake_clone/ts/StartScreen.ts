@@ -35,11 +35,13 @@ module Snake {
             var mouseLoc = this.ctx.input.getMouseLoc();
             var mouseRow = Math.floor(mouseLoc[1] / this.ctx.tileSize);
             var mouseCol = Math.floor(mouseLoc[0] / this.ctx.tileSize);
+            if(this.ctx.input.isMouseOver())
+                this.randomizeBorderColors();
         }
 
         public draw(): void {
             this.fillScreen('white');
-            this.drawBorder(this.ctx.input.isMouseOver() ? 'colorful' : 'checker');
+            this.drawBorder('colorful');
             this.drawArt(this.nameArt, this.artRowOffset, this.artColOffset, 'black');
             
         }

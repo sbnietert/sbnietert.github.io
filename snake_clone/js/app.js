@@ -2,9 +2,11 @@ var Snake;
 (function (Snake) {
     var GameState = (function () {
         function GameState(ctx) {
+            this.borderColors = [];
             this.lastUpdated = Date.now();
             this.minTimePerFrame = 0;
             this.ctx = ctx;
+            this.randomizeBorderColors();
         }
         GameState.prototype.fillScreen = function (color) {
             this.ctx.g2D.fillStyle = color;
@@ -27,14 +29,26 @@ var Snake;
             var colOffset = Math.floor((this.ctx.cols - art[0].length) / 2);
             this.drawArt(art, rowOffset, colOffset, color);
         };
+        GameState.prototype.randomizeBorderColors = function () {
+            var c = 0;
+            for (var i = 0; i < this.ctx.rows; i++, c += 2) {
+                this.borderColors[c] = Snake.Util.randColor();
+                this.borderColors[c + 1] = Snake.Util.randColor();
+            }
+            for (var j = 0; j < this.ctx.cols; j++, c += 2) {
+                this.borderColors[c] = Snake.Util.randColor();
+                this.borderColors[c + 1] = Snake.Util.randColor();
+            }
+        };
         GameState.prototype.drawBorder = function (type) {
             if (type === void 0) { type = 'checker'; }
-            for (var i = 0; i < this.ctx.rows; i++) {
+            var c = 0;
+            for (var i = 0; i < this.ctx.rows; i++, c += 2) {
                 var color1;
                 var color2;
                 if (type == 'colorful') {
-                    color1 = Snake.Util.randColor();
-                    color2 = Snake.Util.randColor();
+                    color1 = this.borderColors[c];
+                    color2 = this.borderColors[c + 1];
                 }
                 else if (type == 'checker') {
                     color1 = (i % 2) ? 'grey' : 'lightgrey';
@@ -46,12 +60,12 @@ var Snake;
                 this.drawSquare([i, 0], color1);
                 this.drawSquare([i, this.ctx.cols - 1], color2);
             }
-            for (var j = 0; j < this.ctx.cols; j++) {
+            for (var j = 0; j < this.ctx.cols; j++, c += 2) {
                 var color1;
                 var color2;
                 if (type == 'colorful') {
-                    color1 = Snake.Util.randColor();
-                    color2 = Snake.Util.randColor();
+                    color1 = this.borderColors[c];
+                    color2 = this.borderColors[c + 1];
                 }
                 else if (type == 'checker') {
                     color1 = (j % 2) ? 'grey' : 'lightgrey';
@@ -134,6 +148,7 @@ var Snake;
         };
         CountDownScreen.prototype.draw = function () {
             this.fillScreen('white');
+            this.drawBorder('black');
             this.drawCenteredArt(this.numberArt[this.currentArt], 'black');
         };
         CountDownScreen.prototype.start = function () {
@@ -149,8 +164,8 @@ var Snake;
 (function (Snake) {
     var GameOverScreen = (function (_super) {
         __extends(GameOverScreen, _super);
-        function GameOverScreen() {
-            _super.apply(this, arguments);
+        function GameOverScreen(ctx) {
+            _super.call(this, ctx);
             this.gameOverArt = [
                 'ooooo                  ooooo                 ',
                 'o                      o   o                 ',
@@ -163,6 +178,7 @@ var Snake;
                 '                                             ',
                 '                                             '
             ];
+            this.drawText(' ', -1, -1, 'black');
         }
         GameOverScreen.prototype.advanceFrame = function () {
         };
@@ -416,10 +432,12 @@ var Snake;
             var mouseLoc = this.ctx.input.getMouseLoc();
             var mouseRow = Math.floor(mouseLoc[1] / this.ctx.tileSize);
             var mouseCol = Math.floor(mouseLoc[0] / this.ctx.tileSize);
+            if (this.ctx.input.isMouseOver())
+                this.randomizeBorderColors();
         };
         StartScreen.prototype.draw = function () {
             this.fillScreen('white');
-            this.drawBorder(this.ctx.input.isMouseOver() ? 'colorful' : 'checker');
+            this.drawBorder('colorful');
             this.drawArt(this.nameArt, this.artRowOffset, this.artColOffset, 'black');
         };
         StartScreen.prototype.start = function () {

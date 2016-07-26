@@ -18,6 +18,11 @@ module Snake {
         ];
         private snake: number[][];
 
+        constructor(ctx: GameContext) {
+            super(ctx);
+            this.drawText(' ',-1, -1, 'black');
+        }
+
         public advanceFrame(): void {
             
         }
