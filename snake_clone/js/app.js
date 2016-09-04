@@ -465,8 +465,7 @@ var Snake;
     Snake.Util = Util;
 })(Snake || (Snake = {}));
 window.onload = function () {
-    var canvas = document.createElement('canvas');
-    document.body.appendChild(canvas);
+    var canvas = document.getElementById('canvas');
     var game = new Snake.GameRunner(canvas);
     game.run();
 };

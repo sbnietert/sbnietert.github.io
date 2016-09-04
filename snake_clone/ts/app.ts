@@ -1,6 +1,5 @@
 window.onload = () => {
-    var canvas = document.createElement('canvas');
-    document.body.appendChild(canvas);
+    var canvas = <HTMLCanvasElement> document.getElementById('canvas');
     var game = new Snake.GameRunner(canvas);
     game.run();
 }
