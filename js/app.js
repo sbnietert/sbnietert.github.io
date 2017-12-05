@@ -1,6 +1,21 @@
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+window.onload = function () {
+    var canvas = document.getElementById('canvas');
+    var game = new Snake.GameRunner(canvas);
+    game.run();
+};
 var Snake;
 (function (Snake) {
-    var GameState = (function () {
+    var GameState = /** @class */ (function () {
         function GameState(ctx) {
             this.borderColors = [];
             this.lastUpdated = Date.now();
@@ -97,22 +112,17 @@ var Snake;
         GameState.prototype.start = function () { };
         ;
         return GameState;
-    })();
+    }());
     Snake.GameState = GameState;
 })(Snake || (Snake = {}));
 /// <reference path="GameState.ts" />
-var __extends = (this && this.__extends) || function (d, b) {
-    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-    function __() { this.constructor = d; }
-    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-};
 var Snake;
 (function (Snake) {
-    var CountDownScreen = (function (_super) {
+    var CountDownScreen = /** @class */ (function (_super) {
         __extends(CountDownScreen, _super);
         function CountDownScreen() {
-            _super.apply(this, arguments);
-            this.numberArt = [[
+            var _this = _super !== null && _super.apply(this, arguments) || this;
+            _this.numberArt = [[
                     'oooo',
                     '   o',
                     '   o',
@@ -137,6 +147,7 @@ var Snake;
                     '  o ',
                     ' ooo'
                 ]];
+            return _this;
         }
         CountDownScreen.prototype.advanceFrame = function () {
             var elapsedSecs = Math.floor((Date.now() - this.startTime) / 1000);
@@ -156,17 +167,17 @@ var Snake;
         };
         CountDownScreen.Name = 'count down';
         return CountDownScreen;
-    })(Snake.GameState);
+    }(Snake.GameState));
     Snake.CountDownScreen = CountDownScreen;
 })(Snake || (Snake = {}));
 /// <reference path="GameState.ts" />
 var Snake;
 (function (Snake) {
-    var GameOverScreen = (function (_super) {
+    var GameOverScreen = /** @class */ (function (_super) {
         __extends(GameOverScreen, _super);
         function GameOverScreen(ctx) {
-            _super.call(this, ctx);
-            this.gameOverArt = [
+            var _this = _super.call(this, ctx) || this;
+            _this.gameOverArt = [
                 'ooooo                  ooooo                 ',
                 'o                      o   o                 ',
                 'o     oooo ooooo oooo  o   o o   o oooo oooo',
@@ -178,7 +189,8 @@ var Snake;
                 '                                             ',
                 '                                             '
             ];
-            this.drawText(' ', -1, -1, 'black');
+            _this.drawText(' ', -1, -1, 'black');
+            return _this;
         }
         GameOverScreen.prototype.advanceFrame = function () {
         };
@@ -200,12 +212,12 @@ var Snake;
         };
         GameOverScreen.Name = 'game over';
         return GameOverScreen;
-    })(Snake.GameState);
+    }(Snake.GameState));
     Snake.GameOverScreen = GameOverScreen;
 })(Snake || (Snake = {}));
 var Snake;
 (function (Snake) {
-    var GameContext = (function () {
+    var GameContext = /** @class */ (function () {
         function GameContext(stateSwitcher) {
             this.stateSwitcher = stateSwitcher;
             this.rows = 23;
@@ -218,10 +230,10 @@ var Snake;
             this.stateSwitcher(newState, this);
         };
         return GameContext;
-    })();
+    }());
     Snake.GameContext = GameContext;
     ;
-    var GameRunner = (function () {
+    var GameRunner = /** @class */ (function () {
         function GameRunner(canvas) {
             var _this = this;
             this.canvas = canvas;
@@ -249,13 +261,13 @@ var Snake;
             requestAnimationFrame(function () { _this.run(); });
         };
         return GameRunner;
-    })();
+    }());
     Snake.GameRunner = GameRunner;
     ;
 })(Snake || (Snake = {}));
 var Snake;
 (function (Snake) {
-    var Input = (function () {
+    var Input = /** @class */ (function () {
         function Input() {
             this.keyLog = {};
             this.listeners = [];
@@ -306,28 +318,29 @@ var Snake;
         Input.RIGHT = 39;
         Input.DOWN = 40;
         return Input;
-    })();
+    }());
     Snake.Input = Input;
 })(Snake || (Snake = {}));
 /// <reference path="GameState.ts" />
 var Snake;
 (function (Snake) {
-    var PlayScreen = (function (_super) {
+    var PlayScreen = /** @class */ (function (_super) {
         __extends(PlayScreen, _super);
         function PlayScreen() {
-            _super.apply(this, arguments);
-            this.keyBindings = {
+            var _this = _super !== null && _super.apply(this, arguments) || this;
+            _this.keyBindings = {
                 37: 'l',
                 38: 'u',
                 39: 'r',
                 40: 'd'
             };
-            this.forbidden = {
+            _this.forbidden = {
                 'l': 'r',
                 'r': 'l',
                 'u': 'd',
                 'd': 'u'
             };
+            return _this;
         }
         PlayScreen.prototype.randi = function (a, b) {
             return Math.floor(a + (b - a + 1) * Math.random());
@@ -396,16 +409,16 @@ var Snake;
         };
         PlayScreen.Name = 'play';
         return PlayScreen;
-    })(Snake.GameState);
+    }(Snake.GameState));
     Snake.PlayScreen = PlayScreen;
 })(Snake || (Snake = {}));
 var Snake;
 (function (Snake) {
-    var StartScreen = (function (_super) {
+    var StartScreen = /** @class */ (function (_super) {
         __extends(StartScreen, _super);
         function StartScreen(ctx) {
-            _super.call(this, ctx);
-            this.nameArt = [
+            var _this = _super.call(this, ctx) || this;
+            _this.nameArt = [
                 ' oooo o                     ',
                 'o     o                     ',
                 'o     o oooo oooo oooo      ',
@@ -422,11 +435,12 @@ var Snake;
                 'o  oo o o     o  o    o   o ',
                 'o   o o oooo  o  oooo o   o '
             ];
-            this.artRows = this.nameArt.length;
-            this.artCols = this.nameArt[0].length;
-            this.artRowOffset = Math.floor((ctx.rows - this.artRows) / 2);
-            this.artColOffset = this.artRowOffset;
-            this.minTimePerFrame = 250;
+            _this.artRows = _this.nameArt.length;
+            _this.artCols = _this.nameArt[0].length;
+            _this.artRowOffset = Math.floor((ctx.rows - _this.artRows) / 2);
+            _this.artColOffset = _this.artRowOffset;
+            _this.minTimePerFrame = 250;
+            return _this;
         }
         StartScreen.prototype.advanceFrame = function () {
             var mouseLoc = this.ctx.input.getMouseLoc();
@@ -448,12 +462,12 @@ var Snake;
         };
         StartScreen.Name = 'start';
         return StartScreen;
-    })(Snake.GameState);
+    }(Snake.GameState));
     Snake.StartScreen = StartScreen;
 })(Snake || (Snake = {}));
 var Snake;
 (function (Snake) {
-    var Util = (function () {
+    var Util = /** @class */ (function () {
         function Util() {
         }
         Util.randColor = function () {
@@ -461,12 +475,7 @@ var Snake;
             return 'hsl(' + hue + ', 90%, 50%)';
         };
         return Util;
-    })();
+    }());
     Snake.Util = Util;
 })(Snake || (Snake = {}));
-window.onload = function () {
-    var canvas = document.getElementById('canvas');
-    var game = new Snake.GameRunner(canvas);
-    game.run();
-};
 //# sourceMappingURL=app.js.map

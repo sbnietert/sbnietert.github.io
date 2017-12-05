@@ -43,7 +43,6 @@ module Snake {
             this.fillScreen('white');
             this.drawBorder('colorful');
             this.drawArt(this.nameArt, this.artRowOffset, this.artColOffset, 'black');
-            
         }
 
         public start(): void {
