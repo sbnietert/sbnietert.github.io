@@ -1,0 +1,160 @@
+@import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,300italic,400,400italic,600");
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/fontawesome.min.css");
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/solid.min.css");
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/brands.min.css");
+
+body {
+    font-family: 'Source Sans Pro', sans-serif;
+    text-align: center;
+    padding: 0;
+    margin: 0;
+}
+
+a {
+    text-decoration: none;
+}
+
+#container {
+    display: inline-block;
+    max-width: 950px;
+    text-align: left;
+    padding: 1em;
+}
+
+#contact {
+    display: inline-block;
+    min-width: 300px;
+    vertical-align: top;
+}
+
+#contact a:link, #contact a:visited, #contact a:active {
+    color: black;
+}
+
+#contact p {
+    margin: 0;
+}
+
+#contact #links {
+    margin-top: 0.25em;
+    font-size: 1.5em;
+}
+
+#main {
+    display: inline-block;
+    min-width: 300px;
+    vertical-align: top;
+}
+
+#main section {
+    max-width: 600px;
+}
+
+h1 {
+    font-weight: 600;
+    font-size: 2.5em;
+}
+
+h2 {
+    border-bottom: 1px solid black;
+}
+
+#updates summary h2 {
+    display: inline;
+    margin: 0;
+    border: none;
+}
+
+#updates summary {
+    border-bottom: 1px solid black;
+    cursor: pointer;
+}
+
+#paper-label-container {
+    float: right;
+}
+
+.paper-label {
+    color: white;
+    padding: 0.3em 0.5em 0.3em 0.5em;
+    font-weight: bold;
+    display: inline-block;
+    position: relative;
+}
+
+h2 .paper-label {
+    font-size: small;
+}
+
+#paper-list td:first-child {
+    vertical-align: top;
+    padding-top: 6px;
+}
+
+#paper-list td:last-child {
+    padding-left: 0.5em;
+}
+
+.bib-block {
+    border: 1px solid gray;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    padding: 5px;
+    position: relative;
+    display: none;
+}
+
+.bib-copy {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    margin-right: 5px;
+    margin-bottom: 5px;
+}
+
+.bib-content {
+    margin: 0;
+    width: 100%;
+    white-space: pre-wrap;
+}
+
+.bib-toggle {
+    display: none;
+}
+
+.bib-link {
+    cursor:pointer;
+    color:blue;
+}
+
+/* Show .bib-content when it has a checked child input */
+.paper-details:has(input.bib-toggle:checked) .bib-block {
+    display: block !important;
+}
+
+.journal {
+    background-color: #324376;
+}
+
+.conference {
+    background-color: #329F5B;
+}
+
+.preprint {
+    background-color: #9f9fad;
+}
+
+.workshop {
+    background-color: #b87620;
+}
+
+.counter {
+    width: 2.1em;
+    text-align: center;
+    padding: 0.3em 0 0.3em 0;
+}
+
+.paper-award {
+    color: crimson;
+    margin: 0;
+}

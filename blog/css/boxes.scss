@@ -1,0 +1,94 @@
+@font-face {
+  font-family: 'iconfont';
+
+  src: url('../fonts/iconfont/iconfont.eot');
+  src: url('../fonts/iconfont/iconfont.eot#iefix') format('embedded-opentype'), // not '?#iefix', because webpack will add '?hash=[hash]'
+  url('../fonts/iconfont/iconfont.woff') format('woff'),
+  url('../fonts/iconfont/iconfont.ttf') format('truetype'),
+  url('../fonts/iconfont/iconfont.svg#iconfont') format('svg');
+}
+
+%base-iconfont {
+  font-family: "iconfont" !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  -webkit-text-stroke-width: 0.2px;
+
+  /* Enable Ligatures ================ */
+  letter-spacing: 0;
+  font-feature-settings: "liga";
+  font-variant-ligatures: discretionary-ligatures;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@mixin box($border-color, $header-color, $text-color, $icon: null) {
+  box-shadow: 0 2px 2px 0 rgba(0,0,0,.14),
+              0 1px 5px 0 rgba(0,0,0,.12),
+              0 3px 1px -2px rgba(0,0,0,.2);
+  position: relative;
+  margin: .9765em 0;
+  padding: 0 .75rem;
+  border-left: .25rem solid $border-color;
+  border-radius: .125rem;
+  overflow: auto;
+
+  h3 {
+    margin: 0 -0.75rem;
+    border-bottom: .1rem solid rgba(68,138,255,.1);
+    background-color: $header-color;
+    font-weight: 700;
+    display: block;
+    font-size: 1em;
+    color: $text-color;
+    padding: 0 0 0 .75rem;
+    line-height: 2.5;
+  }
+
+  @if $icon {
+    h3::before {
+      @extend %base-iconfont;
+      content: $icon;
+      margin-right: 0.75rem;
+      font-weight: 400;
+      color: $border-color;
+    }
+  }
+}
+
+.Theorem, .Lemma, .Proposition, .Corollary, .Definition, .Conjecture {
+  @include box(#00b0ff, rgba(0,176,255,.1), #008ac7);
+}
+
+.Remark {
+  @include box(#00b8d4, rgba(0,184,212,.1), #00899e, "\ea0c");
+}
+
+.Example {
+  @include box(#00bfa5, rgba(0,191,165,.1), #009e88, "\e906");
+}
+
+.Proof {
+  @include box(#00c853, rgba(0,200,83,.1), #00a043);
+  &:after {
+    content: "□";
+    float: right;
+    margin-top: -1em;
+    font-size: 1.9em;
+  }
+}
+
+.Algorithm {
+  @include box(#8e5bff, rgba(101,31,255,.1), #6635d2, "\e9b9")
+}
+
+.Warning {
+  @include box(#ff9100, rgba(255,145,0,.1), #e48200, "\ea07")
+} 
