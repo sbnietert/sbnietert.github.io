@@ -96,6 +96,8 @@ h2 .paper-label {
 }
 
 .bib-block {
+    overflow-wrap: anywhere;
+    word-break: break-word;
     border: 1px solid gray;
     margin-top: 5px;
     margin-bottom: 5px;
