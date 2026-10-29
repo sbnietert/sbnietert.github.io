@@ -1,3 +1,12 @@
+document.querySelectorAll('.bib-link').forEach(button => {
+  const block = document.getElementById(button.getAttribute('aria-controls'));
+  button.addEventListener('click', () => {
+    const expanded = button.getAttribute('aria-expanded') === 'true';
+    button.setAttribute('aria-expanded', String(!expanded));
+    block.hidden = expanded;
+  });
+});
+
 document.querySelectorAll('.bib-copy').forEach(button => {
   button.addEventListener('click', () => {
     const pre = button.nextElementSibling; // get the <pre> block
