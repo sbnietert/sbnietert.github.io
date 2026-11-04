@@ -1,0 +1,40 @@
+import Papers
+
+-- The paper's results: each must list no axiom beyond propext, Classical.choice and Quot.sound.
+#print axioms Papers.WassersteinRegretS2S3.buresProcrustes
+#print axioms Papers.WassersteinRegretS2S3.w2BuresEquivalence
+#print axioms Papers.WassersteinRegretS2S3.conditionNumberFormula
+#print axioms Papers.WassersteinRegretS2S3.regretStability
+#print axioms Papers.WassersteinRegretS2S3.stabilityImplications
+#print axioms Papers.WassersteinRegretS2S3.droRankAdaptive
+#print axioms Papers.WassersteinRegretS2S3.popLimitRiskBds
+#print axioms Papers.WassersteinRegretS2S3.basicMatrixNorms
+#print axioms Papers.WassersteinRegretS2S3.pseudoinverseProjectionFacts
+#print axioms Papers.WassersteinRegretS2S3.rectangularResolventIdentities
+#print axioms Papers.WassersteinRegretS2S3.factorPerturbation
+#print axioms Papers.WassersteinRegretS2S3.sinThmVariant
+#print axioms Papers.WassersteinRegretS2S3.elementaryScalarIneqs
+#print axioms Papers.WassersteinRegretS2S3.kroneckerFact
+#print axioms Papers.WassersteinRegretS2S3.regretProjectionFormula
+#print axioms Papers.WassersteinRegretS2S3.buresLambdaMinContinuity
+#print axioms Papers.WassersteinRegretS2S3.quadraticBallDuality
+#print axioms Papers.WassersteinRegretS2S3.innerDroStrongDuality
+#print axioms Papers.WassersteinRegretS2S3.droStrongDualityDiagonal
+#print axioms Papers.WassersteinRegretS2S3.droSymmetry
+#print axioms Papers.WassersteinRegretS2S3.parameterMapDerivative
+#print axioms Papers.WassersteinRegretS2S3.altConditionNumberFormula
+#print axioms Papers.WassersteinRegretS2S3.altConditionNumberClosedForm
+#print axioms Papers.WassersteinRegretS2S3.conditionNumberComparisonUb
+#print axioms Papers.WassersteinRegretS2S3.conditionNumberComparisonLb
+#print axioms Papers.WassersteinRegretS2S3.regretStabilityRefined
+#print axioms Papers.WassersteinRegretS2S3.perturbedConditionNumber
+#print axioms Papers.WassersteinRegretS2S3.droMinimax
+#print axioms Papers.WassersteinRegretS2S3.stabilityImplicationsErm
+#print axioms Papers.WassersteinRegretS2S3.stabilityImplicationsDro
+#print axioms Papers.WassersteinRegretS2S3.droRegularizer
+#print axioms Papers.WassersteinRegretS2S3.rescalingInvariance
+#print axioms Papers.WassersteinRegretS2S3.minimaxLb
+#print axioms Papers.WassersteinRegretS2S3.lemma34
+#print axioms Papers.WassersteinRegretS2S3.droLbA
+#print axioms Papers.WassersteinRegretS2S3.droLbB
+#print axioms Papers.WassersteinRegretS2S3.lemma37

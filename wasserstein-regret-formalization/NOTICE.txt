@@ -1,0 +1,9 @@
+Manuscript: Regret-Optimal Wasserstein-Robust Linear Regression.
+Manuscript authors: Sloan Nietert and Daniel Kuhn.
+Formalization prepared using PaperFormalizer and Lean.
+PaperFormalizer authors: Jiyuan Tan, Jose Blanchet and Vasilis Syrgkanis.
+The statements retain attribution to the manuscript authors. This export does not assign
+a new blanket license to the manuscript. PaperFormalizer's license and authors notice
+are preserved in licenses/. KaTeX styles and fonts retain their MIT license there.
+Mathlib and Causalean are public dependencies fetched when building; their notices are
+provided for reference, and their fetched source retains its own license notices.

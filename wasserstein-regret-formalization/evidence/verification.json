@@ -1,0 +1,1149 @@
+{
+  "schema": 1,
+  "title": "Regret-Optimal Wasserstein-Robust Linear Regression",
+  "authors": [
+    "Sloan Nietert",
+    "Daniel Kuhn"
+  ],
+  "scope": "Scope: Sections 2 and 3 of the manuscript, together with their required preliminary and appendix results. Later computational and finite-sample statistical results are outside this verification snapshot. Formalization of the full paper is in progress.",
+  "scope_main_results": [
+    "Theorem 2.2",
+    "Lemma 3.1",
+    "Lemma 3.2",
+    "Lemma 3.3",
+    "Theorem 3.4"
+  ],
+  "formalization_snapshot_date": "2026-11-01",
+  "export_date": "2026-11-03",
+  "verdict_within_scope": "no_error_found",
+  "summary": {
+    "verified": 12,
+    "verified_with_bookkeeping": 25,
+    "conditional": 0,
+    "repaired": 0,
+    "unresolved": 0,
+    "not_checked": 0,
+    "not_determined": 0,
+    "refuted": 0
+  },
+  "arbitrary_minimizer_selections": true,
+  "uniqueness_assumed": false,
+  "recorded_build_passed": true,
+  "recorded_source_scan_findings": [],
+  "per_result_evidence_source": "completed verification snapshot",
+  "source_tree_sha256": "a2d1b24fb910f1f724acfde84461ec4ebc0b6606fcacc774bc23c1161150e025",
+  "results": [
+    {
+      "id": "lem:bures-procrustes",
+      "name": "Lemma 1.1",
+      "title": "Procrustes formulation of $\\sB$",
+      "manuscript_statement_tex": "\\label{lem:Bures-Procrustes} For all $\\bA,\\bB \\in \\PSD^d$, we have \\begin{equation*} \\sB(\\bA,\\bB) = \\min_{\\bU \\in \\OO^d} \\|\\bA^{\\frac{1}{2}} - \\bB^{\\frac{1}{2}}\\bU\\|_\\Frob = \\min_{\\substack{\\bS,\\bT \\in \\R^{d \\times d}\\\\ \\bA = \\bS \\bS^\\top\\!\\!, \\,\\bB = \\bT \\bT^\\top}} \\|\\bS - \\bT\\|_\\Frob. \\end{equation*} Thus, $\\sB(\\bA,\\bB) \\leq \\eps$ if and only if there exists $\\bDelta \\in \\R^{d \\times d}$ with $\\|\\bDelta\\|_\\Frob \\leq \\eps$ such that $\\bA = (\\bB^{1/2} + \\bDelta)(\\bB^{1/2} + \\bDelta)^\\top$. The minimum is attained by $\\bU = \\bI_d$ if $\\bA$ and $\\bB$ are simultaneously diagonalizable.",
+      "classification": "verified",
+      "lean": {
+        "file": "Papers/WassersteinRegretS2S3/Helpers/BuresGeometry.lean",
+        "declaration": "Papers.WassersteinRegretS2S3.buresProcrustes",
+        "line": 91
+      },
+      "statement_correspondence": "equivalent",
+      "axioms": {
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "clean": true
+      },
+      "bookkeeping": [],
+      "added_premises": [],
+      "assumed_substrate": [],
+      "findings": []
+    },
+    {
+      "id": "lem:w2-bures-equivalence",
+      "name": "Lemma 1.2",
+      "title": "$\\Wtwo$--Bures equivalence",
+      "manuscript_statement_tex": "\\label{lem:W2-Bures-equivalence} For all $P \\in \\cP_2(\\R^d)$ and $\\eps \\geq 0$, we have \\begin{equation*} \\{ \\bSigma_Q : Q \\in \\cB_\\eps(P) \\} = \\cB_\\eps(\\bSigma_P) = \\left\\{ (\\bSigma_P^{1/2} + \\bDelta)(\\bSigma_P^{1/2} + \\bDelta)^\\top : \\|\\bDelta\\|_\\Frob \\leq \\eps \\right\\}. \\end{equation*}",
+      "classification": "verified",
+      "lean": {
+        "file": "Papers/WassersteinRegretS2S3/Helpers/Transport/MomentGeometry.lean",
+        "declaration": "Papers.WassersteinRegretS2S3.w2BuresEquivalence",
+        "line": 323
+      },
+      "statement_correspondence": "equivalent",
+      "axioms": {
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "clean": true
+      },
+      "bookkeeping": [],
+      "added_premises": [],
+      "assumed_substrate": [],
+      "findings": []
+    },
+    {
+      "id": "thm:condition-number-formula",
+      "name": "Theorem 2.2",
+      "title": "Condition number formula",
+      "manuscript_statement_tex": "\\label{thm:condition-number-formula} If $P \\in \\cP^*$, then $R^\\star_\\eps(P) = \\kappa_P \\eps^2 + o(\\eps^2)$ as $\\eps \\downarrow 0$ and \\begin{equation*} \\kappa_P = 1 + \\lambda_{\\max}\\bigl(\\bA_P \\bA_P^\\top + \\lambda_{\\min}(\\bSigma_X^P)^{-1}\\bSigma_E^P\\,\\bigr). \\end{equation*} This implies the useful bounds \\begin{equation*} 1 + \\max\\left\\{\\|\\bA_P\\|_\\op^2, \\frac{\\lambda_{\\max}(\\bSigma_E^P)}{\\lambda_{\\min}(\\bSigma_X^P)}\\right\\} \\leq \\kappa_P \\leq 1 + \\|\\bA_P\\|_\\op^2 + \\frac{\\lambda_{\\max}(\\bSigma_E^P)}{\\lambda_{\\min}(\\bSigma_X^P)}. \\end{equation*}",
+      "classification": "verified_with_bookkeeping",
+      "lean": {
+        "file": "Papers/WassersteinRegretS2S3/T1.lean",
+        "declaration": "Papers.WassersteinRegretS2S3.conditionNumberFormula",
+        "line": 127
+      },
+      "statement_correspondence": "equivalent",
+      "axioms": {
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "clean": true
+      },
+      "bookkeeping": [
+        {
+          "id": "ass:pin-1",
+          "condition": "For every $v\\in\\R^m$, the norm in $L$ satisfies $\\|v\\|^2=v^\\top v$.",
+          "reason": "pins reading of def:risk: The closed-form regret display immediately following the definition of $\\bA_P$ uses $\\| (\\bA-\\bA_P)(\\bSigma_X^P)^{1/2}\\|_\\Frob^2$; the next sentence explicitly defines the Frobenius and Euclidean operator norms."
+        }
+      ],
+      "added_premises": [],
+      "assumed_substrate": [],
+      "findings": []
+    },
+    {
+      "id": "lem:regret-stability",
+      "name": "Lemma 3.1",
+      "title": "Regret stability",
+      "manuscript_statement_tex": "\\label{lem:regret-stability} For all $\\bA \\in \\cA$, $P \\in \\cP^*$, and $Q \\in \\cP_2(\\R^d)$, we have \\begin{align*} \\left|\\sqrt{R(\\bA,P)} - \\sqrt{R(\\bA,Q)}\\,\\right| \\leq (2\\sqrt{\\kappa_P} + \\|\\bA\\|_\\op)\\Wtwo(P,Q). \\end{align*} Moreover, for $\\bA = \\bA_P$, we have $R(\\bA_P,Q) \\leq 4 \\kappa_P \\Wtwo(P,Q)^2$.",
+      "classification": "verified_with_bookkeeping",
+      "lean": {
+        "file": "Papers/WassersteinRegretS2S3/Helpers/Stability.lean",
+        "declaration": "Papers.WassersteinRegretS2S3.regretStability",
+        "line": 30
+      },
+      "statement_correspondence": "equivalent",
+      "axioms": {
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "clean": true
+      },
+      "bookkeeping": [
+        {
+          "id": "ass:pin-1",
+          "condition": "For every $v\\in\\R^m$, the norm in $L$ satisfies $\\|v\\|^2=v^\\top v$.",
+          "reason": "pins reading of def:risk: The closed-form regret display immediately following the definition of $\\bA_P$ uses $\\| (\\bA-\\bA_P)(\\bSigma_X^P)^{1/2}\\|_\\Frob^2$; the next sentence explicitly defines the Frobenius and Euclidean operator norms."
+        }
+      ],
+      "added_premises": [],
+      "assumed_substrate": [],
+      "findings": []
+    },
+    {
+      "id": "lem:stability-implications",
+      "name": "Lemma 3.2",
+      "title": "Stability implications",
+      "manuscript_statement_tex": "\\label{lem:stability-implications} Let $P \\in \\cP^*$ and $\\eps > 0$. We then have \\begin{align*} R_\\eps(\\MRO_\\eps,P) \\lesssim \\kappa_P \\eps^2, \\qquad R_\\eps(\\SNR_\\eps,P) \\lesssim \\kappa_P \\eps^2. \\end{align*} In contrast, our ERM and DRO guarantees adapt to the largest condition number in a ball around $P$: \\begin{equation*} R_\\eps(\\ERM,P) \\lesssim \\sup_{Q \\in \\cB_\\eps(P)} \\kappa_Q \\eps^2 \\qquad R_\\eps(\\DRO_\\eps,P) \\lesssim \\sup_{Q \\in \\cB_{2\\eps}(P)} \\kappa_Q \\eps^2 \\end{equation*} If $\\eps^2 \\leq \\lambda_{\\min}(\\bSigma_X^P)/16$, then these two upper bounds are at most $O(\\kappa_P \\eps^2)$.",
+      "classification": "verified_with_bookkeeping",
+      "lean": {
+        "file": "Papers/WassersteinRegretS2S3/Helpers/EstimatorBounds.lean",
+        "declaration": "Papers.WassersteinRegretS2S3.stabilityImplications",
+        "line": 431
+      },
+      "statement_correspondence": "equivalent",
+      "axioms": {
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "clean": true
+      },
+      "bookkeeping": [
+        {
+          "id": "ass:pin-1",
+          "condition": "For every $v\\in\\R^m$, the norm in $L$ satisfies $\\|v\\|^2=v^\\top v$.",
+          "reason": "pins reading of def:risk: The closed-form regret display immediately following the definition of $\\bA_P$ uses $\\| (\\bA-\\bA_P)(\\bSigma_X^P)^{1/2}\\|_\\Frob^2$; the next sentence explicitly defines the Frobenius and Euclidean operator norms."
+        }
+      ],
+      "added_premises": [],
+      "assumed_substrate": [],
+      "findings": []
+    },
+    {
+      "id": "lem:dro-rank-adaptive",
+      "name": "Lemma 3.3",
+      "title": "Rank-adaptive DRO bound",
+      "manuscript_statement_tex": "\\label{lem:DRO-rank-adaptive} For $P\\in\\cP^*$ and $\\eps > 0$, set $r\\defeq\\reff(\\bSigma_E^P)$. Then \\[ R_\\eps(\\DRO_\\eps,P) \\lesssim \\left(\\sqrt{\\min\\{p,r\\}}(\\kappa_P-1) + \\sqrt{r(\\kappa_P-1)} + \\kappa_P\\right) \\eps^2. \\]",
+      "classification": "verified_with_bookkeeping",
+      "lean": {
+        "file": "Papers/WassersteinRegretS2S3/Helpers/RankAdaptive.lean",
+        "declaration": "Papers.WassersteinRegretS2S3.droRankAdaptive",
+        "line": 146
+      },
+      "statement_correspondence": "equivalent",
+      "axioms": {
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "clean": true
+      },
+      "bookkeeping": [
+        {
+          "id": "ass:pin-1",
+          "condition": "For every $v\\in\\R^m$, the norm in $L$ satisfies $\\|v\\|^2=v^\\top v$.",
+          "reason": "pins reading of def:risk: The closed-form regret display immediately following the definition of $\\bA_P$ uses $\\| (\\bA-\\bA_P)(\\bSigma_X^P)^{1/2}\\|_\\Frob^2$; the next sentence explicitly defines the Frobenius and Euclidean operator norms."
+        }
+      ],
+      "added_premises": [],
+      "assumed_substrate": [],
+      "findings": []
+    },
+    {
+      "id": "thm:pop-limit-risk-bds",
+      "name": "Theorem 3.4",
+      "title": "Population-limit summary rates",
+      "manuscript_statement_tex": "\\label{thm:pop-limit-risk-bds} Fix $\\eps > 0$ and $\\kappa \\geq 1$. Then the minimax rate for the class $\\cG = \\cG(\\kappa)$ is $R_\\eps^\\star(\\cG) \\asymp \\kappa \\eps^2$, and this is achieved by both $\\MRO_\\eps$ and $\\SNR_\\eps$. In contrast, we have $R_\\eps(\\ERM,\\cG) = \\infty$ and \\begin{equation*} R_\\eps(\\DRO_\\eps,\\cG) \\asymp \\left(\\sqrt{\\min\\{p,m\\}}(\\kappa-1) + \\sqrt{m(\\kappa-1)} + \\kappa\\right) \\eps^2. \\end{equation*} In particular, if $\\kappa \\geq 2$ and $p \\geq m$, then $R_\\eps(\\DRO_\\eps,\\cG) \\asymp \\sqrt{m} \\kappa \\eps^2$.",
+      "classification": "verified_with_bookkeeping",
+      "lean": {
+        "file": "Papers/WassersteinRegretS2S3/T3.lean",
+        "declaration": "Papers.WassersteinRegretS2S3.popLimitRiskBds",
+        "line": 102
+      },
+      "statement_correspondence": "equivalent",
+      "axioms": {
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "clean": true
+      },
+      "bookkeeping": [
+        {
+          "id": "ass:pin-1",
+          "condition": "For every $v\\in\\R^m$, the norm in $L$ satisfies $\\|v\\|^2=v^\\top v$.",
+          "reason": "pins reading of def:risk: The closed-form regret display immediately following the definition of $\\bA_P$ uses $\\| (\\bA-\\bA_P)(\\bSigma_X^P)^{1/2}\\|_\\Frob^2$; the next sentence explicitly defines the Frobenius and Euclidean operator norms."
+        }
+      ],
+      "added_premises": [],
+      "assumed_substrate": [],
+      "findings": []
+    },
+    {
+      "id": "lem:basic-matrix-norms",
+      "name": "Lemma A.1",
+      "title": "Basic norm and projection inequalities",
+      "manuscript_statement_tex": "\\label{lem:basic-matrix-norms} For dimension-compatible matrices, \\begin{align*} \\|\\bA\\bB\\bC\\|_\\Frob &\\leq \\|\\bA\\|_\\op\\,\\|\\bB\\|_\\Frob\\,\\|\\bC\\|_\\op,\\\\ \\|\\bA\\bB\\|_\\op &\\leq \\|\\bA\\|_\\op\\|\\bB\\|_\\op,\\\\ \\|\\bA\\bB\\|_\\Frob &\\leq \\|\\bA\\|_\\op\\|\\bB\\|_\\Frob,\\\\ \\|\\bA\\|_\\op &\\leq \\|\\bA\\|_\\Frob, \\qquad \\|\\bA\\|_\\Frob \\leq \\sqrt{\\rank(\\bA)}\\,\\|\\bA\\|_\\op. \\end{align*} If $\\bPi$ is an orthogonal projection, then \\begin{equation*} \\|\\bM\\bPi\\|_\\Frob\\leq \\|\\bM\\|_\\Frob, \\qquad \\|\\bM\\|_\\Frob^2 = \\|\\bM\\bPi\\|_\\Frob^2+ \\|\\bM(\\bI-\\bPi)\\|_\\Frob^2. \\end{equation*} Finally, \\begin{equation*} |\\langle \\bA,\\bB\\rangle_\\Frob| \\leq \\|\\bA\\|_\\Frob\\|\\bB\\|_\\Frob. \\end{equation*}",
+      "classification": "verified",
+      "lean": {
+        "file": "Papers/WassersteinRegretS2S3/Helpers/MatrixNorms.lean",
+        "declaration": "Papers.WassersteinRegretS2S3.basicMatrixNorms",
+        "line": 189
+      },
+      "statement_correspondence": "equivalent",
+      "axioms": {
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "clean": true
+      },
+      "bookkeeping": [],
+      "added_premises": [],
+      "assumed_substrate": [],
+      "findings": []
+    },
+    {
+      "id": "lem:pseudoinverse-projection-facts",
+      "name": "Lemma A.2",
+      "title": "Pseudoinverse and projection identities",
+      "manuscript_statement_tex": "\\label{lem:pseudoinverse-projection-facts} Let $\\bM\\in\\R^{r\\times d}$. Then $\\bM^\\dagger\\bM$ is the orthogonal projection onto the row space of $\\bM$, and $\\bM\\bM^\\dagger$ is the orthogonal projection onto the column space of $\\bM$. We always have $\\bM^\\dagger=\\bM^\\top(\\bM\\bM^\\top)^\\dagger$. If $\\bM$ has full row rank, then \\begin{equation*} \\bM^\\dagger=\\bM^\\top(\\bM\\bM^\\top)^{-1}, \\qquad \\bM\\bM^\\dagger=\\bI_r, \\qquad \\|\\bM^\\dagger\\|_\\op=\\sigma_{\\min}(\\bM)^{-1}. \\end{equation*} If $\\bB\\succeq\\bZero$, then $\\bB^\\dagger\\bB^2=\\bB$.",
+      "classification": "verified",
+      "lean": {
+        "file": "Papers/WassersteinRegretS2S3/Helpers/Pseudoinverse.lean",
+        "declaration": "Papers.WassersteinRegretS2S3.pseudoinverseProjectionFacts",
+        "line": 255
+      },
+      "statement_correspondence": "equivalent",
+      "axioms": {
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "clean": true
+      },
+      "bookkeeping": [],
+      "added_premises": [],
+      "assumed_substrate": [],
+      "findings": []
+    },
+    {
+      "id": "lem:rectangular-resolvent-identities",
+      "name": "Lemma A.4",
+      "title": "Rectangular resolvent identities",
+      "manuscript_statement_tex": "\\label{lem:rectangular-resolvent-identities} Let $\\bM\\in\\R^{r\\times d}$ and $\\eta>\\|\\bM\\|_\\op^2$. Then \\begin{align*} (\\eta\\bI_d-\\bM^\\top\\bM)^{-1}\\bM^\\top &= \\bM^\\top(\\eta\\bI_r-\\bM\\bM^\\top)^{-1},\\\\ \\bM(\\eta\\bI_d-\\bM^\\top\\bM)^{-1} &= (\\eta\\bI_r-\\bM\\bM^\\top)^{-1}\\bM,\\\\ \\bM^\\top\\bM(\\eta\\bI_d-\\bM^\\top\\bM)^{-1} &= \\bM^\\top(\\eta\\bI_r-\\bM\\bM^\\top)^{-1}\\bM,\\\\ \\eta(\\eta\\bI_d-\\bM^\\top\\bM)^{-1} &= \\bI_d+ \\bM^\\top(\\eta\\bI_r-\\bM\\bM^\\top)^{-1}\\bM. \\end{align*}",
+      "classification": "verified",
+      "lean": {
+        "file": "Papers/WassersteinRegretS2S3/Helpers/Resolvent.lean",
+        "declaration": "Papers.WassersteinRegretS2S3.rectangularResolventIdentities",
+        "line": 41
+      },
+      "statement_correspondence": "equivalent",
+      "axioms": {
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "clean": true
+      },
+      "bookkeeping": [],
+      "added_premises": [],
+      "assumed_substrate": [],
+      "findings": []
+    },
+    {
+      "id": "lem:factor-perturbation",
+      "name": "Lemma A.5",
+      "title": "Lipschitz continuity of the smallest singular value",
+      "manuscript_statement_tex": "\\label{lem:factor-perturbation} Let $\\bS,\\bar{\\bS}\\in\\R^{r\\times d}$. Then \\begin{equation*} | \\sigma_{\\min}(\\bar{\\bS}) - \\sigma_{\\min}(\\bS) | \\leq \\|\\bar{\\bS}-\\bS\\|_\\op. \\end{equation*}",
+      "classification": "verified",
+      "lean": {
+        "file": "Papers/WassersteinRegretS2S3/Helpers/Spectral.lean",
+        "declaration": "Papers.WassersteinRegretS2S3.factorPerturbation",
+        "line": 37
+      },
+      "statement_correspondence": "equivalent",
+      "axioms": {
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "clean": true
+      },
+      "bookkeeping": [],
+      "added_premises": [],
+      "assumed_substrate": [],
+      "findings": []
+    },
+    {
+      "id": "lem:sin-thm-variant",
+      "name": "Lemma A.6",
+      "title": "Row-space projection perturbation",
+      "manuscript_statement_tex": "\\label{lem:sin-thm-variant} Let $\\bM_0 \\in \\R^{r \\times d}$ have full row rank, and let $\\bM_1 = \\bM_0 + \\bDelta$ for some $\\bDelta \\in \\R^{r \\times d}$. Let $\\bPi_0,\\bPi_1 \\in \\R^{d \\times d}$ denote orthogonal projections onto the row spaces of $\\bM_0,\\bM_1$, respectively. Then, \\begin{equation*} \\|(\\bI_d - \\bPi_0)\\bPi_1\\|_\\Frob \\leq \\|(\\bI_d - \\bPi_1)\\bPi_0\\|_\\Frob \\leq \\frac{\\|\\bDelta\\|_\\Frob}{\\sigma_{\\min}(\\bM_0)}. \\end{equation*}",
+      "classification": "verified",
+      "lean": {
+        "file": "Papers/WassersteinRegretS2S3/Helpers/RowSpacePerturbation.lean",
+        "declaration": "Papers.WassersteinRegretS2S3.sinThmVariant",
+        "line": 25
+      },
+      "statement_correspondence": "equivalent",
+      "axioms": {
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "clean": true
+      },
+      "bookkeeping": [],
+      "added_premises": [],
+      "assumed_substrate": [],
+      "findings": []
+    },
+    {
+      "id": "lem:elementary-scalar-ineqs",
+      "name": "Lemma A.7",
+      "title": "Elementary scalar identities",
+      "manuscript_statement_tex": "\\label{lem:elementary-scalar-ineqs} For $a_1, \\dots, a_k \\geq 0$, \\begin{equation*} \\left(\\sum_{i=1}^k a_i\\right)^2 \\leq k\\sum_{i=1}^k a_i^2. \\end{equation*} For $A,B\\geq0$, \\begin{equation*} \\inf_{\\delta>0}(A+\\delta)\\left(1+\\frac{B}{\\delta}\\right) = (\\sqrt A+\\sqrt B)^2, \\end{equation*} with optimizer $\\delta=\\sqrt{AB}$ when $AB>0$. Finally, for any norm $\\|\\cdot\\|$, we have \\begin{equation*} \\inf_x \\max\\{\\|x-x_0\\|^2,\\|x-x_1\\|^2\\} = \\frac14\\|x_0-x_1\\|^2. \\end{equation*}",
+      "classification": "verified",
+      "lean": {
+        "file": "Papers/WassersteinRegretS2S3/Helpers/Scalar.lean",
+        "declaration": "Papers.WassersteinRegretS2S3.elementaryScalarIneqs",
+        "line": 73
+      },
+      "statement_correspondence": "equivalent",
+      "axioms": {
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "clean": true
+      },
+      "bookkeeping": [],
+      "added_premises": [],
+      "assumed_substrate": [],
+      "findings": []
+    },
+    {
+      "id": "lem:kronecker-fact",
+      "name": "Lemma A.8",
+      "title": "Kronecker trace identity",
+      "manuscript_statement_tex": "\\label{lem:kronecker-fact} For matrices $\\bA,\\bB,\\bC$ with dimensions such that the following products are well-defined, \\begin{equation*} \\tr(\\bA\\bC\\bB\\bC^\\top) = \\vec(\\bC)^\\top(\\bB^\\top\\otimes\\bA)\\vec(\\bC). \\end{equation*}",
+      "classification": "verified",
+      "lean": {
+        "file": "Papers/WassersteinRegretS2S3/Helpers/Kronecker.lean",
+        "declaration": "Papers.WassersteinRegretS2S3.kroneckerFact",
+        "line": 23
+      },
+      "statement_correspondence": "equivalent",
+      "axioms": {
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "clean": true
+      },
+      "bookkeeping": [],
+      "added_premises": [],
+      "assumed_substrate": [],
+      "findings": []
+    },
+    {
+      "id": "lem:regret-projection-formula",
+      "name": "Lemma B.1",
+      "title": "Regression factor identities and regret formula",
+      "manuscript_statement_tex": "\\label{lem:regret-projection-formula} Let $\\bSigma\\in\\PSD^d$, and fix any $\\bS\\in\\R^{d\\times r}$ such that $\\bSigma=\\bS\\bS^\\top$. Let $\\bPi_X=\\bS_X^\\dagger\\bS_X$ be the orthogonal projection onto the row space of $\\bS_X$. Then \\begin{equation*} \\bA_\\bSigma = \\bSigma_{YX}\\bSigma_X^\\dagger = \\bS_Y\\bS_X^\\dagger. \\end{equation*} For the chosen factor $\\bS$, the corresponding residual factor \\[ \\bE \\defeq \\bS_Y-\\bA_\\bSigma\\bS_X = \\bS_Y(\\bI-\\bPi_X) \\] satisfies \\begin{equation*} \\bE \\bS_X^\\top=\\bZero, \\qquad \\bE \\bPi_X=\\bZero, \\qquad \\bE \\bE^\\top=\\bSigma_E. \\end{equation*} Finally, for every $\\bA \\in \\cA$, we have $L(\\bA,\\bSigma)=\\|\\bA\\bS_X-\\bS_Y\\|_\\Frob^2$ and \\begin{equation*} R(\\bA,\\bSigma) = \\|(\\bS_Y-\\bA\\bS_X)\\bPi_X\\|_\\Frob^2 = \\|(\\bA-\\bA_\\bSigma)\\bS_X\\|_\\Frob^2. \\end{equation*}",
+      "classification": "verified_with_bookkeeping",
+      "lean": {
+        "file": "Papers/WassersteinRegretS2S3/Helpers/RegressionProjection.lean",
+        "declaration": "Papers.WassersteinRegretS2S3.regretProjectionFormula",
+        "line": 101
+      },
+      "statement_correspondence": "equivalent",
+      "axioms": {
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "clean": true
+      },
+      "bookkeeping": [
+        {
+          "id": "ass:pin-1",
+          "condition": "For every $v\\in\\R^m$, the norm in $L$ satisfies $\\|v\\|^2=v^\\top v$.",
+          "reason": "pins reading of def:risk: The closed-form regret display immediately following the definition of $\\bA_P$ uses $\\| (\\bA-\\bA_P)(\\bSigma_X^P)^{1/2}\\|_\\Frob^2$; the next sentence explicitly defines the Frobenius and Euclidean operator norms."
+        }
+      ],
+      "added_premises": [],
+      "assumed_substrate": [],
+      "findings": []
+    },
+    {
+      "id": "lem:bures-lambda-min-continuity",
+      "name": "Lemma B.3",
+      "title": "Bures continuity of the smallest feature eigenvalue",
+      "manuscript_statement_tex": "\\label{lem:Bures-lambda-min-continuity} For $\\bSigma,\\bar{\\bSigma}\\in\\PSD^d$, we have \\begin{equation*} \\left| \\sqrt{\\lambda_{\\min}(\\smash{\\bar{\\bSigma}_X)}} - \\sqrt{\\lambda_{\\min}(\\bSigma_X)} \\right| \\leq \\sB(\\bar{\\bSigma},\\bSigma). \\end{equation*} In particular, $\\lambda_{\\min}(\\bSigma_X)$ is continuous with respect to the Bures metric.",
+      "classification": "verified",
+      "lean": {
+        "file": "Papers/WassersteinRegretS2S3/Helpers/BuresGeometry.lean",
+        "declaration": "Papers.WassersteinRegretS2S3.buresLambdaMinContinuity",
+        "line": 295
+      },
+      "statement_correspondence": "equivalent",
+      "axioms": {
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "clean": true
+      },
+      "bookkeeping": [],
+      "added_premises": [],
+      "assumed_substrate": [],
+      "findings": []
+    },
+    {
+      "id": "lem:quadratic-ball-duality",
+      "name": "Lemma C.1",
+      "title": "Quadratic-ball duality",
+      "manuscript_statement_tex": "\\label{lem:quadratic-ball-duality} Let $\\bM\\in\\R^{k\\times d}$ and $\\tilde{\\bW}\\in\\R^{d\\times r}$, where $k,r\\geq1$. Set $b\\defeq\\|\\bM\\|_\\op^2$. For every $\\eta>b$, we have \\begin{equation} \\label{eq:quadratic-ball-envelope} \\sup_{\\bW\\in\\R^{d\\times r}} \\left\\{ \\|\\bM\\bW\\|_\\Frob^2 -\\eta\\|\\bW-\\tilde{\\bW}\\|_\\Frob^2 \\right\\} = \\eta\\tr\\left( (\\eta\\bI_k-\\bM\\bM^\\top)^{-1} \\bM\\tilde{\\bW}\\tilde{\\bW}^\\top\\bM^\\top \\right). \\end{equation} Moreover, for every $t\\in\\R$, with $\\sup\\varnothing=-\\infty$, we have \\begin{equation} \\label{eq:quadratic-ball-duality} \\begin{aligned} \\sup_{\\substack{ \\bW\\in\\R^{d\\times r}\\\\ \\|\\bW-\\tilde{\\bW}\\|_\\Frob^2\\leq t }} \\|\\bM\\bW\\|_\\Frob^2 &= \\sup_{\\bW\\in\\R^{d\\times r}} \\inf_{\\eta\\geq0} \\left\\{ \\|\\bM\\bW\\|_\\Frob^2 +\\eta\\bigl(t-\\|\\bW-\\tilde{\\bW}\\|_\\Frob^2\\bigr) \\right\\}\\\\ &= \\inf_{\\eta\\geq0} \\sup_{\\bW\\in\\R^{d\\times r}} \\left\\{ \\|\\bM\\bW\\|_\\Frob^2 +\\eta\\bigl(t-\\|\\bW-\\tilde{\\bW}\\|_\\Frob^2\\bigr) \\right\\}\\\\ &= \\inf_{\\eta>b} \\eta\\left( t+ \\tr\\left( (\\eta\\bI_k-\\bM\\bM^\\top)^{-1} \\bM\\tilde{\\bW}\\tilde{\\bW}^\\top\\bM^\\top \\right) \\right). \\end{aligned} \\end{equation}",
+      "classification": "verified",
+      "lean": {
+        "file": "Papers/WassersteinRegretS2S3/Helpers/QuadraticDuality.lean",
+        "declaration": "Papers.WassersteinRegretS2S3.quadraticBallDuality",
+        "line": 516
+      },
+      "statement_correspondence": "equivalent",
+      "axioms": {
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "clean": true
+      },
+      "bookkeeping": [],
+      "added_premises": [],
+      "assumed_substrate": [],
+      "findings": []
+    },
+    {
+      "id": "lem:inner-dro-strong-duality",
+      "name": "Lemma C.2",
+      "title": "Inner DRO strong duality",
+      "manuscript_statement_tex": "\\label{lem:inner-DRO-strong-duality} Let $P\\in\\cP_2(\\R^d)$, $\\eps > 0$, and $\\bM\\in\\R^{k\\times d}$ for $1\\leq k\\leq d$. Then \\[ \\sup_{Q\\in\\cB_\\eps(P)}\\E_Q\\|\\bM Z\\|^2 = \\inf_{\\eta>\\|\\bM\\|_\\op^2} \\eta\\left( \\eps^2+ \\tr\\left( (\\eta\\bI_k-\\bM\\bM^\\top)^{-1} \\bM\\bSigma_P\\bM^\\top \\right) \\right). \\] For regression, taking $k=m$ and $\\bM=\\bM_\\bA$ gives \\[ \\sup_{Q\\in\\cB_\\eps(P)}L(\\bA,Q) = \\inf_{\\eta>1+\\|\\bA\\|_\\op^2} \\eta\\left( \\eps^2+ \\tr\\left( ((\\eta-1)\\bI_m-\\bA\\bA^\\top)^{-1} \\bM_\\bA\\bSigma_P\\bM_\\bA^\\top \\right) \\right). \\]",
+      "classification": "verified_with_bookkeeping",
+      "lean": {
+        "file": "Papers/WassersteinRegretS2S3/Helpers/InnerDRO.lean",
+        "declaration": "Papers.WassersteinRegretS2S3.innerDroStrongDuality",
+        "line": 161
+      },
+      "statement_correspondence": "equivalent",
+      "axioms": {
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "clean": true
+      },
+      "bookkeeping": [
+        {
+          "id": "ass:pin-1",
+          "condition": "For every $v\\in\\R^m$, the norm in $L$ satisfies $\\|v\\|^2=v^\\top v$.",
+          "reason": "pins reading of def:risk: The closed-form regret display immediately following the definition of $\\bA_P$ uses $\\| (\\bA-\\bA_P)(\\bSigma_X^P)^{1/2}\\|_\\Frob^2$; the next sentence explicitly defines the Frobenius and Euclidean operator norms."
+        }
+      ],
+      "added_premises": [],
+      "assumed_substrate": [],
+      "findings": []
+    },
+    {
+      "id": "thm:dro-strong-duality-diagonal",
+      "name": "Corollary C.3",
+      "title": "Diagonal case",
+      "manuscript_statement_tex": "\\label{cor:DRO-strong-duality-diagonal} Let $P\\in\\cP_2(\\R^d)$, $\\eps > 0$, and $\\bA\\in\\cA$ satisfy \\[ \\bA\\bA^\\top=\\diag(a_1^2,\\ldots,a_m^2). \\] For $i=1,\\ldots,m$, define the $i$th coordinate residual second moment \\[ r_i^2 \\defeq \\E_P\\bigl[(e_i^\\top(\\bA X-Y))^2\\bigr] = e_i^\\top\\bM_\\bA\\bSigma_P\\bM_\\bA^\\top e_i. \\] We then have \\[ \\sup_{Q\\in\\cB_\\eps(P)}L(\\bA,Q) = \\inf_{\\eta>1+\\max_i a_i^2} \\eta\\left( \\eps^2+ \\sum_{i=1}^m \\frac{r_i^2}{\\eta-1-a_i^2} \\right). \\]",
+      "classification": "verified_with_bookkeeping",
+      "lean": {
+        "file": "Papers/WassersteinRegretS2S3/T2.lean",
+        "declaration": "Papers.WassersteinRegretS2S3.droStrongDualityDiagonal",
+        "line": 121
+      },
+      "statement_correspondence": "equivalent",
+      "axioms": {
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "clean": true
+      },
+      "bookkeeping": [
+        {
+          "id": "ass:pin-1",
+          "condition": "For every $v\\in\\R^m$, the norm in $L$ satisfies $\\|v\\|^2=v^\\top v$.",
+          "reason": "pins reading of def:risk: The closed-form regret display immediately following the definition of $\\bA_P$ uses $\\| (\\bA-\\bA_P)(\\bSigma_X^P)^{1/2}\\|_\\Frob^2$; the next sentence explicitly defines the Frobenius and Euclidean operator norms."
+        }
+      ],
+      "added_premises": [],
+      "assumed_substrate": [],
+      "findings": []
+    },
+    {
+      "id": "lem:dro-symmetry",
+      "name": "Lemma C.4",
+      "title": "Averaging over symmetries",
+      "manuscript_statement_tex": "\\label{lem:DRO-symmetry} Let $U$ be a compact subgroup of \\[ \\left\\{ \\diag(\\bU_X,\\bU_Y): \\bU_X\\in\\OO^p,\\ \\bU_Y\\in\\OO^m \\right\\}. \\] Suppose $P,\\tilde{P} \\in\\cP_2(\\R^d)$ satisfy $\\bU_\\sharp P=P$ and $\\bU_\\sharp \\tilde{P}=\\tilde{P}$ for every $\\bU\\in U$. Let $\\eps > 0$, and fix any minimizer $\\hat{\\bA} \\in \\cA$ for the $\\DRO_\\eps[\\tilde{P}]$, $\\MRO_\\eps[\\tilde{P}]$, or $\\SNR_\\eps[\\tilde{P}]$ optimization problem. Let $\\mu$ be normalized Haar measure on $U$ and define \\[ \\bar{\\bA} \\defeq \\int_U\\bU_Y^\\top\\hat{\\bA}\\bU_X\\,\\dd\\mu(\\bU). \\] Then $\\bar{\\bA}$ is a minimizer of the same optimization problem, is invariant in the sense that \\[ \\bU_Y^\\top\\bar{\\bA}\\bU_X=\\bar{\\bA} \\qquad\\forall\\,\\bU\\in U, \\] and satisfies $R(\\bar{\\bA},P)\\leq R(\\hat{\\bA},P)$. Consequently, restricting any of these optimization problems to invariant coefficient matrices preserves its optimal value. Moreover, to lower bound the target regret of every optimizer, it suffices to lower bound the target regret of every invariant optimizer.",
+      "classification": "verified_with_bookkeeping",
+      "lean": {
+        "file": "Papers/WassersteinRegretS2S3/Helpers/Symmetry.lean",
+        "declaration": "Papers.WassersteinRegretS2S3.droSymmetry",
+        "line": 640
+      },
+      "statement_correspondence": "equivalent",
+      "axioms": {
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "clean": true
+      },
+      "bookkeeping": [
+        {
+          "id": "ass:pin-1",
+          "condition": "For every $v\\in\\R^m$, the norm in $L$ satisfies $\\|v\\|^2=v^\\top v$.",
+          "reason": "pins reading of def:risk: The closed-form regret display immediately following the definition of $\\bA_P$ uses $\\| (\\bA-\\bA_P)(\\bSigma_X^P)^{1/2}\\|_\\Frob^2$; the next sentence explicitly defines the Frobenius and Euclidean operator norms."
+        }
+      ],
+      "added_premises": [],
+      "assumed_substrate": [],
+      "findings": []
+    },
+    {
+      "id": "lem:parameter-map-derivative",
+      "name": "Lemma E.1",
+      "title": "Parameter map derivative",
+      "manuscript_statement_tex": "\\label{lem:parameter-map-derivative} The map $g:\\cC \\to \\cA$ is continuously differentiable, with \\begin{equation*} D g(\\bSigma)[\\bH] = (\\bH_{YX} - g(\\bSigma) \\bH_X) \\bSigma_X^{-1} \\quad \\forall\\, \\bH \\in \\Sym^d. \\end{equation*}",
+      "classification": "verified",
+      "lean": {
+        "file": "Papers/WassersteinRegretS2S3/Helpers/ParameterDerivative.lean",
+        "declaration": "Papers.WassersteinRegretS2S3.parameterMapDerivative",
+        "line": 125
+      },
+      "statement_correspondence": "equivalent",
+      "axioms": {
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "clean": true
+      },
+      "bookkeeping": [],
+      "added_premises": [],
+      "assumed_substrate": [],
+      "findings": []
+    },
+    {
+      "id": "lem:alt-condition-number-formula",
+      "name": "Lemma E.2",
+      "title": "Derivative expression for $\\tilde{\\kappa}$",
+      "manuscript_statement_tex": "\\label{lem:alt-condition-number-formula} Fixing $\\bSigma \\in \\cC^*$ with square root $\\bS \\defeq \\bSigma^{1/2}$, we have \\begin{equation} \\label{eq:alt-condition-number-formula} \\tilde{\\kappa}(\\bSigma) = \\sup_{\\bDelta \\in \\R^{d \\times d}: \\|\\bDelta\\|_\\Frob \\leq 1} \\bigl\\|D g(\\bSigma)[\\bS \\bDelta^\\top + \\bDelta \\bS] \\bSigma_X^{1/2}\\bigr\\|_{\\Frob}^2. \\end{equation} Moreover, the expansion \\begin{equation} \\label{eq:alt-condition-number-taylor-expansion} \\sup_{\\bSigma' \\in \\cB_\\eps(\\bSigma)} R(g(\\bSigma'),\\bSigma) = \\tilde{\\kappa}(\\bSigma) \\eps^2 + o(\\eps^2) \\quad \\eps \\to 0 \\end{equation} holds uniformly as $\\bSigma$ varies in any compact subset of $\\cC^*$.",
+      "classification": "verified_with_bookkeeping",
+      "lean": {
+        "file": "Papers/WassersteinRegretS2S3/Helpers/AlternativeCondition.lean",
+        "declaration": "Papers.WassersteinRegretS2S3.altConditionNumberFormula",
+        "line": 77
+      },
+      "statement_correspondence": "equivalent",
+      "axioms": {
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "clean": true
+      },
+      "bookkeeping": [
+        {
+          "id": "ass:pin-1",
+          "condition": "For every $v\\in\\R^m$, the norm in $L$ satisfies $\\|v\\|^2=v^\\top v$.",
+          "reason": "pins reading of def:risk: The closed-form regret display immediately following the definition of $\\bA_P$ uses $\\| (\\bA-\\bA_P)(\\bSigma_X^P)^{1/2}\\|_\\Frob^2$; the next sentence explicitly defines the Frobenius and Euclidean operator norms."
+        }
+      ],
+      "added_premises": [],
+      "assumed_substrate": [],
+      "findings": []
+    },
+    {
+      "id": "lem:alt-condition-number-closed-form",
+      "name": "Lemma E.3",
+      "title": "Closed form for $\\tilde{\\kappa}$",
+      "manuscript_statement_tex": "\\label{lem:alt-condition-number-closed-form} For $\\bSigma \\in \\cC^*$, we have \\begin{equation*} \\tilde{\\kappa}(\\bSigma) = 1 + \\lambda_{\\max}\\left(\\bA_\\bSigma \\bA_\\bSigma^\\top + \\lambda_{\\min}(\\bSigma_X)^{-1}\\bSigma_E\\right). \\end{equation*} In particular, we have \\begin{equation*} 1 + \\max\\left\\{\\|\\bA_\\bSigma\\|_\\op^2, \\frac{\\lambda_{\\max}(\\bSigma_E)}{\\lambda_{\\min}(\\bSigma_X)}\\right\\} \\leq \\tilde{\\kappa}(\\bSigma) \\leq 1 + \\|\\bA_\\bSigma\\|_\\op^2 + \\frac{\\lambda_{\\max}(\\bSigma_E)}{\\lambda_{\\min}(\\bSigma_X)}. \\end{equation*}",
+      "classification": "verified_with_bookkeeping",
+      "lean": {
+        "file": "Papers/WassersteinRegretS2S3/Helpers/ConditionClosedForm.lean",
+        "declaration": "Papers.WassersteinRegretS2S3.altConditionNumberClosedForm",
+        "line": 31
+      },
+      "statement_correspondence": "equivalent",
+      "axioms": {
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "clean": true
+      },
+      "bookkeeping": [
+        {
+          "id": "ass:pin-1",
+          "condition": "For every $v\\in\\R^m$, the norm in $L$ satisfies $\\|v\\|^2=v^\\top v$.",
+          "reason": "pins reading of def:risk: The closed-form regret display immediately following the definition of $\\bA_P$ uses $\\| (\\bA-\\bA_P)(\\bSigma_X^P)^{1/2}\\|_\\Frob^2$; the next sentence explicitly defines the Frobenius and Euclidean operator norms."
+        }
+      ],
+      "added_premises": [],
+      "assumed_substrate": [],
+      "findings": []
+    },
+    {
+      "id": "lem:condition-number-comparison-ub",
+      "name": "Lemma E.4",
+      "title": "Condition number comparison, upper bound",
+      "manuscript_statement_tex": "\\label{lem:condition-number-comparison-UB} For all $\\bSigma \\in \\cC^*$, $\\kappa(\\bSigma) \\leq \\tilde{\\kappa}(\\bSigma)$.",
+      "classification": "verified_with_bookkeeping",
+      "lean": {
+        "file": "Papers/WassersteinRegretS2S3/Helpers/ConditionComparison.lean",
+        "declaration": "Papers.WassersteinRegretS2S3.conditionNumberComparisonUb",
+        "line": 75
+      },
+      "statement_correspondence": "equivalent",
+      "axioms": {
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "clean": true
+      },
+      "bookkeeping": [
+        {
+          "id": "ass:pin-1",
+          "condition": "For every $v\\in\\R^m$, the norm in $L$ satisfies $\\|v\\|^2=v^\\top v$.",
+          "reason": "pins reading of def:risk: The closed-form regret display immediately following the definition of $\\bA_P$ uses $\\| (\\bA-\\bA_P)(\\bSigma_X^P)^{1/2}\\|_\\Frob^2$; the next sentence explicitly defines the Frobenius and Euclidean operator norms."
+        }
+      ],
+      "added_premises": [],
+      "assumed_substrate": [],
+      "findings": []
+    },
+    {
+      "id": "lem:condition-number-comparison-lb",
+      "name": "Lemma E.5",
+      "title": "Condition number comparison, lower bound",
+      "manuscript_statement_tex": "\\label{lem:condition-number-comparison-LB} For all $\\bSigma \\in \\cC^*$, we have \\begin{align*} \\kappa(\\bSigma) \\geq J_\\bSigma \\defeq \\liminf_{\\eps \\downarrow 0} \\eps^{-2} \\inf_{\\bA \\in \\cA} \\sup_{\\bSigma' \\in \\cB_\\eps(\\bSigma)} R(\\bA,\\bSigma') \\geq \\tilde{\\kappa}(\\bSigma). \\end{align*}",
+      "classification": "verified_with_bookkeeping",
+      "lean": {
+        "file": "Papers/WassersteinRegretS2S3/Helpers/ConditionComparison.lean",
+        "declaration": "Papers.WassersteinRegretS2S3.conditionNumberComparisonLb",
+        "line": 87
+      },
+      "statement_correspondence": "equivalent",
+      "axioms": {
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "clean": true
+      },
+      "bookkeeping": [
+        {
+          "id": "ass:pin-1",
+          "condition": "For every $v\\in\\R^m$, the norm in $L$ satisfies $\\|v\\|^2=v^\\top v$.",
+          "reason": "pins reading of def:risk: The closed-form regret display immediately following the definition of $\\bA_P$ uses $\\| (\\bA-\\bA_P)(\\bSigma_X^P)^{1/2}\\|_\\Frob^2$; the next sentence explicitly defines the Frobenius and Euclidean operator norms."
+        }
+      ],
+      "added_premises": [],
+      "assumed_substrate": [],
+      "findings": []
+    },
+    {
+      "id": "lem:regret-stability-refined",
+      "name": "Lemma F.1",
+      "title": "Regret stability, refined",
+      "manuscript_statement_tex": "\\label{lem:regret-stability-refined} For all $\\eps\\geq0$, $\\bA\\in\\cA$, $P\\in\\cP^*$, and $Q\\in\\cB_\\eps(P)$, we have \\begin{align*} \\left| \\sqrt{R(\\bA,P)}-\\sqrt{R(\\bA,Q)} \\right| \\leq \\left( \\max\\left\\{ \\|\\bA-\\bA_P\\|_\\op,\\, \\sqrt{1+\\|\\bA\\|_\\op^2}\\, \\right\\} + \\sqrt{ \\frac{\\lambda_{\\max}(\\bSigma_E^P)} {\\lambda_{\\min}(\\bSigma_X^P)} } \\,\\right)\\eps. \\end{align*}",
+      "classification": "verified_with_bookkeeping",
+      "lean": {
+        "file": "Papers/WassersteinRegretS2S3/Helpers/RefinedStability.lean",
+        "declaration": "Papers.WassersteinRegretS2S3.regretStabilityRefined",
+        "line": 271
+      },
+      "statement_correspondence": "equivalent",
+      "axioms": {
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "clean": true
+      },
+      "bookkeeping": [
+        {
+          "id": "ass:pin-1",
+          "condition": "For every $v\\in\\R^m$, the norm in $L$ satisfies $\\|v\\|^2=v^\\top v$.",
+          "reason": "pins reading of def:risk: The closed-form regret display immediately following the definition of $\\bA_P$ uses $\\| (\\bA-\\bA_P)(\\bSigma_X^P)^{1/2}\\|_\\Frob^2$; the next sentence explicitly defines the Frobenius and Euclidean operator norms."
+        }
+      ],
+      "added_premises": [],
+      "assumed_substrate": [],
+      "findings": []
+    },
+    {
+      "id": "lem:perturbed-condition-number",
+      "name": "Lemma F.2",
+      "title": "Perturbed condition number",
+      "manuscript_statement_tex": "\\label{lem:perturbed-condition-number} Fix $\\bSigma\\!\\in\\!\\cC^*$ and $\\bar{\\bSigma}\\!\\in\\!\\PSD^d$ with $\\sB(\\bar{\\bSigma},\\bSigma) \\!\\leq\\!\\sqrt{\\lambda_{\\min}(\\bSigma_X)}/2$. Then $\\bar{\\bSigma}\\in\\cC^*$ and $\\kappa(\\bar{\\bSigma})\\leq 19\\kappa(\\bSigma)$.",
+      "classification": "verified_with_bookkeeping",
+      "lean": {
+        "file": "Papers/WassersteinRegretS2S3/Helpers/PerturbedCondition.lean",
+        "declaration": "Papers.WassersteinRegretS2S3.perturbedConditionNumber",
+        "line": 222
+      },
+      "statement_correspondence": "equivalent",
+      "axioms": {
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "clean": true
+      },
+      "bookkeeping": [
+        {
+          "id": "ass:pin-1",
+          "condition": "For every $v\\in\\R^m$, the norm in $L$ satisfies $\\|v\\|^2=v^\\top v$.",
+          "reason": "pins reading of def:risk: The closed-form regret display immediately following the definition of $\\bA_P$ uses $\\| (\\bA-\\bA_P)(\\bSigma_X^P)^{1/2}\\|_\\Frob^2$; the next sentence explicitly defines the Frobenius and Euclidean operator norms."
+        }
+      ],
+      "added_premises": [],
+      "assumed_substrate": [],
+      "findings": []
+    },
+    {
+      "id": "lem:dro-minimax",
+      "name": "Lemma F.3",
+      "title": "DRO strong duality",
+      "manuscript_statement_tex": "\\label{lem:DRO-minimax} Let $\\eps \\geq 0$. For all $P \\in \\cP^*$ and $\\hat{P} \\in \\cB_\\eps(P)$, we have \\begin{equation*} \\inf_{\\bA \\in \\cA} \\sup_{Q \\in \\cB_\\eps(\\hat{P})} L(\\bA,Q) = \\max_{Q \\in \\cB_\\eps(\\hat{P})} \\inf_{\\bA \\in \\cA} L(\\bA,Q). \\end{equation*} In particular, a maximizer exists for the right-hand side.",
+      "classification": "verified_with_bookkeeping",
+      "lean": {
+        "file": "Papers/WassersteinRegretS2S3/Helpers/DROMinimax.lean",
+        "declaration": "Papers.WassersteinRegretS2S3.droMinimax",
+        "line": 28
+      },
+      "statement_correspondence": "equivalent",
+      "axioms": {
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "clean": true
+      },
+      "bookkeeping": [
+        {
+          "id": "ass:pin-1",
+          "condition": "For every $v\\in\\R^m$, the norm in $L$ satisfies $\\|v\\|^2=v^\\top v$.",
+          "reason": "pins reading of def:risk: The closed-form regret display immediately following the definition of $\\bA_P$ uses $\\| (\\bA-\\bA_P)(\\bSigma_X^P)^{1/2}\\|_\\Frob^2$; the next sentence explicitly defines the Frobenius and Euclidean operator norms."
+        }
+      ],
+      "added_premises": [],
+      "assumed_substrate": [],
+      "findings": []
+    },
+    {
+      "id": "lem:stability-implications-erm",
+      "name": "Lemma F.4",
+      "title": "Stability implications, ERM",
+      "manuscript_statement_tex": "\\label{lem:stability-implications-ERM} Let $P\\in\\cP_2(\\R^d)$ and $\\eps > 0$. We then have \\begin{equation*} R_\\eps(\\ERM,P) \\leq4\\eps^2\\sup_{Q\\in\\cB_\\eps(P)}\\kappa_Q. \\end{equation*} If additionally $\\eps^2\\leq\\lambda_{\\min}(\\bSigma_X^P)/4$, then $R_\\eps(\\ERM,P)\\leq 76\\kappa_P\\eps^2$.",
+      "classification": "verified_with_bookkeeping",
+      "lean": {
+        "file": "Papers/WassersteinRegretS2S3/Helpers/EstimatorBounds.lean",
+        "declaration": "Papers.WassersteinRegretS2S3.stabilityImplicationsErm",
+        "line": 64
+      },
+      "statement_correspondence": "equivalent",
+      "axioms": {
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "clean": true
+      },
+      "bookkeeping": [
+        {
+          "id": "ass:pin-1",
+          "condition": "For every $v\\in\\R^m$, the norm in $L$ satisfies $\\|v\\|^2=v^\\top v$.",
+          "reason": "pins reading of def:risk: The closed-form regret display immediately following the definition of $\\bA_P$ uses $\\| (\\bA-\\bA_P)(\\bSigma_X^P)^{1/2}\\|_\\Frob^2$; the next sentence explicitly defines the Frobenius and Euclidean operator norms."
+        }
+      ],
+      "added_premises": [],
+      "assumed_substrate": [],
+      "findings": []
+    },
+    {
+      "id": "lem:stability-implications-dro",
+      "name": "Lemma F.5",
+      "title": "Stability implications, DRO",
+      "manuscript_statement_tex": "\\label{lem:stability-implications-DRO} Let $P\\in\\cP_2(\\R^d)$ and $\\eps > 0$. We then have \\begin{equation*} R_\\eps(\\DRO_\\eps,P) \\leq16\\eps^2\\sup_{Q\\in\\cB_{2\\eps}(P)}\\kappa_Q. \\end{equation*} If $\\eps^2\\leq\\lambda_{\\min}(\\bSigma_X^P)/16$, this implies that $R_\\eps(\\DRO_\\eps,P)\\leq 304\\kappa_P\\eps^2$.",
+      "classification": "verified_with_bookkeeping",
+      "lean": {
+        "file": "Papers/WassersteinRegretS2S3/Helpers/EstimatorBounds.lean",
+        "declaration": "Papers.WassersteinRegretS2S3.stabilityImplicationsDro",
+        "line": 208
+      },
+      "statement_correspondence": "equivalent",
+      "axioms": {
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "clean": true
+      },
+      "bookkeeping": [
+        {
+          "id": "ass:pin-1",
+          "condition": "For every $v\\in\\R^m$, the norm in $L$ satisfies $\\|v\\|^2=v^\\top v$.",
+          "reason": "pins reading of def:risk: The closed-form regret display immediately following the definition of $\\bA_P$ uses $\\| (\\bA-\\bA_P)(\\bSigma_X^P)^{1/2}\\|_\\Frob^2$; the next sentence explicitly defines the Frobenius and Euclidean operator norms."
+        }
+      ],
+      "added_premises": [],
+      "assumed_substrate": [],
+      "findings": []
+    },
+    {
+      "id": "lem:dro-regularizer",
+      "name": "Lemma F.6",
+      "title": "DRO regularizer bound",
+      "manuscript_statement_tex": "\\label{lem:DRO-regularizer} For $P\\in\\cP^*$, define \\[ \\Gamma_P \\defeq \\sqrt{\\tr\\bigl( (\\bI_m+\\bA_P\\bA_P^\\top)\\bSigma_E^P \\bigr)}. \\] Then, for every $\\eps\\geq0$, \\begin{equation} \\label{eq:DRO-regularizer-intermediate} R_\\eps(\\DRO_\\eps,P) \\leq4\\Gamma_P\\eps+5\\kappa_P\\eps^2. \\end{equation}",
+      "classification": "verified_with_bookkeeping",
+      "lean": {
+        "file": "Papers/WassersteinRegretS2S3/Helpers/Regularizer.lean",
+        "declaration": "Papers.WassersteinRegretS2S3.droRegularizer",
+        "line": 184
+      },
+      "statement_correspondence": "equivalent",
+      "axioms": {
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "clean": true
+      },
+      "bookkeeping": [
+        {
+          "id": "ass:pin-1",
+          "condition": "For every $v\\in\\R^m$, the norm in $L$ satisfies $\\|v\\|^2=v^\\top v$.",
+          "reason": "pins reading of def:risk: The closed-form regret display immediately following the definition of $\\bA_P$ uses $\\| (\\bA-\\bA_P)(\\bSigma_X^P)^{1/2}\\|_\\Frob^2$; the next sentence explicitly defines the Frobenius and Euclidean operator norms."
+        }
+      ],
+      "added_premises": [],
+      "assumed_substrate": [],
+      "findings": []
+    },
+    {
+      "id": "lem:rescaling-invariance",
+      "name": "Lemma F.7",
+      "title": "Rescaling invariance",
+      "manuscript_statement_tex": "\\label{lem:rescaling-invariance} Let $P,Q\\in\\cP_2(\\R^d)$ and $\\bA\\in\\cA$. For $\\lambda>0$, let $P_\\lambda$ and $Q_\\lambda$ denote the pushforwards of $P$ and $Q$, respectively, under $z\\mapsto\\lambda z$. We then have \\begin{align*} \\Wtwo(P_\\lambda,Q_\\lambda) &=\\lambda\\Wtwo(P,Q),\\\\ L(\\bA,P_\\lambda)&=\\lambda^2L(\\bA,P),\\\\ R(\\bA,P_\\lambda)&=\\lambda^2R(\\bA,P),\\\\ \\kappa_{P_\\lambda}&=\\kappa_P. \\end{align*} Moreover, for $\\eps\\geq0$, $R^\\star_{\\lambda\\eps}(P_\\lambda) =\\lambda^2R^\\star_\\eps(P)$, and the optimization problems defining $\\DRO_{\\lambda\\eps}[P_\\lambda]$ and $\\DRO_\\eps[P]$ have the same minimizer set.",
+      "classification": "verified_with_bookkeeping",
+      "lean": {
+        "file": "Papers/WassersteinRegretS2S3/Helpers/Scaling.lean",
+        "declaration": "Papers.WassersteinRegretS2S3.rescalingInvariance",
+        "line": 417
+      },
+      "statement_correspondence": "equivalent",
+      "axioms": {
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "clean": true
+      },
+      "bookkeeping": [
+        {
+          "id": "ass:pin-1",
+          "condition": "For every $v\\in\\R^m$, the norm in $L$ satisfies $\\|v\\|^2=v^\\top v$.",
+          "reason": "pins reading of def:risk: The closed-form regret display immediately following the definition of $\\bA_P$ uses $\\| (\\bA-\\bA_P)(\\bSigma_X^P)^{1/2}\\|_\\Frob^2$; the next sentence explicitly defines the Frobenius and Euclidean operator norms."
+        }
+      ],
+      "added_premises": [],
+      "assumed_substrate": [],
+      "findings": []
+    },
+    {
+      "id": "lem:minimax-lb",
+      "name": "Lemma F.8",
+      "title": "Minimax lower bound",
+      "manuscript_statement_tex": "\\label{lem:minimax-lb} For every $\\eps > 0$ and $\\kappa \\geq 1$, we have $R^\\star_\\eps(\\cG(\\kappa))\\geq\\kappa\\eps^2$.",
+      "classification": "verified_with_bookkeeping",
+      "lean": {
+        "file": "Papers/WassersteinRegretS2S3/Helpers/MinimaxLower.lean",
+        "declaration": "Papers.WassersteinRegretS2S3.minimaxLb",
+        "line": 148
+      },
+      "statement_correspondence": "equivalent",
+      "axioms": {
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "clean": true
+      },
+      "bookkeeping": [
+        {
+          "id": "ass:pin-1",
+          "condition": "For every $v\\in\\R^m$, the norm in $L$ satisfies $\\|v\\|^2=v^\\top v$.",
+          "reason": "pins reading of def:risk: The closed-form regret display immediately following the definition of $\\bA_P$ uses $\\| (\\bA-\\bA_P)(\\bSigma_X^P)^{1/2}\\|_\\Frob^2$; the next sentence explicitly defines the Frobenius and Euclidean operator norms."
+        }
+      ],
+      "added_premises": [],
+      "assumed_substrate": [],
+      "findings": []
+    },
+    {
+      "id": "lem:lemma-34",
+      "name": "Lemma (ERM lower bound)",
+      "title": "ERM lower bound",
+      "manuscript_statement_tex": "For every $\\eps>0$ and $\\kappa\\geq1$, $R_\\eps(\\ERM,\\cG(\\kappa))=\\infty$, independently of the choice of ERM minimizer.",
+      "classification": "verified_with_bookkeeping",
+      "lean": {
+        "file": "Papers/WassersteinRegretS2S3/Helpers/ERMDivergence.lean",
+        "declaration": "Papers.WassersteinRegretS2S3.lemma34",
+        "line": 195
+      },
+      "statement_correspondence": "equivalent",
+      "axioms": {
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "clean": true
+      },
+      "bookkeeping": [
+        {
+          "id": "ass:pin-1",
+          "condition": "For every $v\\in\\R^m$, the norm in $L$ satisfies $\\|v\\|^2=v^\\top v$.",
+          "reason": "pins reading of def:risk: The closed-form regret display immediately following the definition of $\\bA_P$ uses $\\| (\\bA-\\bA_P)(\\bSigma_X^P)^{1/2}\\|_\\Frob^2$; the next sentence explicitly defines the Frobenius and Euclidean operator norms."
+        }
+      ],
+      "added_premises": [],
+      "assumed_substrate": [],
+      "findings": []
+    },
+    {
+      "id": "lem:dro-lb-a",
+      "name": "Lemma F.10",
+      "title": "DRO lower bound, A",
+      "manuscript_statement_tex": "\\label{lem:DRO-LB-A} For every $\\kappa\\geq1$, \\[ R_1(\\DRO_1,\\cG(\\kappa)) \\gtrsim\\sqrt{\\min\\{p,m\\}}\\,(\\kappa-1), \\] independently of the choice of DRO minimizer.",
+      "classification": "verified_with_bookkeeping",
+      "lean": {
+        "file": "Papers/WassersteinRegretS2S3/Helpers/LowerA.lean",
+        "declaration": "Papers.WassersteinRegretS2S3.droLbA",
+        "line": 110
+      },
+      "statement_correspondence": "equivalent",
+      "axioms": {
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "clean": true
+      },
+      "bookkeeping": [
+        {
+          "id": "ass:pin-1",
+          "condition": "For every $v\\in\\R^m$, the norm in $L$ satisfies $\\|v\\|^2=v^\\top v$.",
+          "reason": "pins reading of def:risk: The closed-form regret display immediately following the definition of $\\bA_P$ uses $\\| (\\bA-\\bA_P)(\\bSigma_X^P)^{1/2}\\|_\\Frob^2$; the next sentence explicitly defines the Frobenius and Euclidean operator norms."
+        }
+      ],
+      "added_premises": [],
+      "assumed_substrate": [],
+      "findings": []
+    },
+    {
+      "id": "lem:dro-lb-b",
+      "name": "Lemma F.11",
+      "title": "DRO lower bound, B",
+      "manuscript_statement_tex": "\\label{lem:DRO-LB-B} For every $\\kappa\\geq1$, \\[ R_1(\\DRO_1,\\cG(\\kappa)) \\gtrsim\\sqrt{m(\\kappa-1)}, \\] independently of the choice of DRO minimizer.",
+      "classification": "verified_with_bookkeeping",
+      "lean": {
+        "file": "Papers/WassersteinRegretS2S3/Helpers/LowerB.lean",
+        "declaration": "Papers.WassersteinRegretS2S3.droLbB",
+        "line": 292
+      },
+      "statement_correspondence": "equivalent",
+      "axioms": {
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "clean": true
+      },
+      "bookkeeping": [
+        {
+          "id": "ass:pin-1",
+          "condition": "For every $v\\in\\R^m$, the norm in $L$ satisfies $\\|v\\|^2=v^\\top v$.",
+          "reason": "pins reading of def:risk: The closed-form regret display immediately following the definition of $\\bA_P$ uses $\\| (\\bA-\\bA_P)(\\bSigma_X^P)^{1/2}\\|_\\Frob^2$; the next sentence explicitly defines the Frobenius and Euclidean operator norms."
+        }
+      ],
+      "added_premises": [],
+      "assumed_substrate": [],
+      "findings": []
+    },
+    {
+      "id": "lem:lemma-37",
+      "name": "Lemma (DRO lower bound)",
+      "title": "DRO lower bound",
+      "manuscript_statement_tex": "For all $\\eps > 0$ and $\\kappa \\geq 1$, we have \\begin{equation*} R_\\eps(\\DRO_\\eps,\\cG(\\kappa)) \\gtrsim \\bigl(\\sqrt{\\min\\{p,m\\}} (\\kappa - 1) + \\sqrt{m(\\kappa - 1)} + \\kappa\\,\\bigr) \\eps^2, \\end{equation*} no matter how ties are broken to select DRO solutions.",
+      "classification": "verified_with_bookkeeping",
+      "lean": {
+        "file": "Papers/WassersteinRegretS2S3/Helpers/DROLower.lean",
+        "declaration": "Papers.WassersteinRegretS2S3.lemma37",
+        "line": 31
+      },
+      "statement_correspondence": "equivalent",
+      "axioms": {
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "clean": true
+      },
+      "bookkeeping": [
+        {
+          "id": "ass:pin-1",
+          "condition": "For every $v\\in\\R^m$, the norm in $L$ satisfies $\\|v\\|^2=v^\\top v$.",
+          "reason": "pins reading of def:risk: The closed-form regret display immediately following the definition of $\\bA_P$ uses $\\| (\\bA-\\bA_P)(\\bSigma_X^P)^{1/2}\\|_\\Frob^2$; the next sentence explicitly defines the Frobenius and Euclidean operator norms."
+        }
+      ],
+      "added_premises": [],
+      "assumed_substrate": [],
+      "findings": []
+    }
+  ],
+  "cited_support_wrappers": [
+    {
+      "id": "lem:bures-procrustes-cited-identity",
+      "declaration": "Papers.WassersteinRegretS2S3.CitedProcrustesIdentity",
+      "file": "Papers/WassersteinRegretS2S3/Helpers/Cited.lean",
+      "proved": true
+    },
+    {
+      "id": "lem:w2-bures-block-contraction",
+      "declaration": "Papers.WassersteinRegretS2S3.CitedBlockContraction",
+      "file": "Papers/WassersteinRegretS2S3/Helpers/Cited.lean",
+      "proved": true
+    },
+    {
+      "id": "lem:quadratic-ball-s-lemma",
+      "declaration": "Papers.WassersteinRegretS2S3.CitedQuadraticBallSLemma",
+      "file": "Papers/WassersteinRegretS2S3/Helpers/Cited.lean",
+      "proved": true
+    },
+    {
+      "id": "lem:factor-perturbation-cited-inequality",
+      "declaration": "Papers.WassersteinRegretS2S3.factorPerturbationCitedInequality",
+      "file": "Papers/WassersteinRegretS2S3/Helpers/Spectral.lean",
+      "proved": true
+    }
+  ],
+  "excluded": "Later computational and finite-sample statistical results; full manuscript; private run data; optional Round B work.",
+  "reproduction": {
+    "toolchain": "leanprover/lean4:v4.33.0",
+    "commands": [
+      "lake exe cache get",
+      "lake build",
+      "lake env lean Check.lean",
+      "lake env lean ScopeChecks.lean"
+    ],
+    "network_needed_for_first_build": true
+  }
+}

@@ -1,0 +1,15 @@
+[
+  {
+    "name": "Causalean",
+    "public_git": "https://github.com/Jiyuan-Tan/CausalSmith",
+    "public_rev": "a7085d88d2e4b30003db7097ca374f4718da0f01",
+    "uncommitted": 0,
+    "local_rev": "a7085d88d2e4b30003db7097ca374f4718da0f01",
+    "files": {
+      "Causalean/Mathlib/Analysis/MatrixEuclidean.lean": "d953e94fec05f75f5b57403e39626dd3caad5ae5",
+      "Causalean/Mathlib/Analysis/MoorePenrose.lean": "38d346a3cc4b8b1885e6ee7d346a1fc6807577b6",
+      "Causalean/Mathlib/Analysis/SingularValueWeyl.lean": "7f8ff0fb8494659d754fb15db6f48aad3f7e275e"
+    },
+    "status": "same"
+  }
+]

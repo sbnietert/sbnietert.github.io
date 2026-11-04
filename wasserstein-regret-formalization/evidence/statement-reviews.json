@@ -1,0 +1,548 @@
+{
+  "source_snapshot_date": "2026-11-01",
+  "review_standard_sha1": "16865e36da9271bbf0e9906def5868e43c1ec0d8",
+  "targets": [
+    {
+      "id": "ass:basic-matrix-norms-projection",
+      "reviewer_1_verdict": "matched",
+      "reviewer_2_verdict": "matched"
+    },
+    {
+      "id": "ass:dro-strong-duality-diagonal",
+      "reviewer_1_verdict": "matched",
+      "reviewer_2_verdict": "matched"
+    },
+    {
+      "id": "ass:dro-symmetry-compact-group",
+      "reviewer_1_verdict": "matched",
+      "reviewer_2_verdict": "matched"
+    },
+    {
+      "id": "ass:dro-symmetry-invariant-laws",
+      "reviewer_1_verdict": "matched",
+      "reviewer_2_verdict": "matched"
+    },
+    {
+      "id": "ass:dro-symmetry-minimizer",
+      "reviewer_1_verdict": "matched",
+      "reviewer_2_verdict": "matched"
+    },
+    {
+      "id": "ass:perturbed-condition-number-radius",
+      "reviewer_1_verdict": "matched",
+      "reviewer_2_verdict": "matched"
+    },
+    {
+      "id": "ass:pin-1",
+      "reviewer_1_verdict": "matched",
+      "reviewer_2_verdict": "matched"
+    },
+    {
+      "id": "ass:pseudoinverse-projection-facts-positive",
+      "reviewer_1_verdict": "matched",
+      "reviewer_2_verdict": "matched"
+    },
+    {
+      "id": "ass:pseudoinverse-projection-facts-row-rank",
+      "reviewer_1_verdict": "matched",
+      "reviewer_2_verdict": "matched"
+    },
+    {
+      "id": "ass:rectangular-resolvent-identities-eta",
+      "reviewer_1_verdict": "matched",
+      "reviewer_2_verdict": "matched"
+    },
+    {
+      "id": "ass:regret-projection-formula-factor",
+      "reviewer_1_verdict": "matched",
+      "reviewer_2_verdict": "matched"
+    },
+    {
+      "id": "ass:sin-thm-variant-row-rank",
+      "reviewer_1_verdict": "matched",
+      "reviewer_2_verdict": "matched"
+    },
+    {
+      "id": "ass:singular-value-convention",
+      "reviewer_1_verdict": "matched",
+      "reviewer_2_verdict": "matched"
+    },
+    {
+      "id": "ass:stability-implications-dro-small-radius",
+      "reviewer_1_verdict": "matched",
+      "reviewer_2_verdict": "matched"
+    },
+    {
+      "id": "ass:stability-implications-erm-small-radius",
+      "reviewer_1_verdict": "matched",
+      "reviewer_2_verdict": "matched"
+    },
+    {
+      "id": "ass:stability-implications-small-radius",
+      "reviewer_1_verdict": "matched",
+      "reviewer_2_verdict": "matched"
+    },
+    {
+      "id": "def:alternative-condition-number",
+      "reviewer_1_verdict": "matched",
+      "reviewer_2_verdict": "matched"
+    },
+    {
+      "id": "def:bures-ball",
+      "reviewer_1_verdict": "matched",
+      "reviewer_2_verdict": "matched"
+    },
+    {
+      "id": "def:bures-distance",
+      "reviewer_1_verdict": "matched",
+      "reviewer_2_verdict": "matched"
+    },
+    {
+      "id": "def:bures-regression",
+      "reviewer_1_verdict": "matched",
+      "reviewer_2_verdict": "matched"
+    },
+    {
+      "id": "def:class-regrets",
+      "reviewer_1_verdict": "matched",
+      "reviewer_2_verdict": "matched"
+    },
+    {
+      "id": "def:condition-number",
+      "reviewer_1_verdict": "matched",
+      "reviewer_2_verdict": "matched"
+    },
+    {
+      "id": "def:dro-regularizer-scale",
+      "reviewer_1_verdict": "matched",
+      "reviewer_2_verdict": "matched"
+    },
+    {
+      "id": "def:effective-rank",
+      "reviewer_1_verdict": "matched",
+      "reviewer_2_verdict": "matched"
+    },
+    {
+      "id": "def:factor-blocks",
+      "reviewer_1_verdict": "matched",
+      "reviewer_2_verdict": "matched"
+    },
+    {
+      "id": "def:joint-laws",
+      "reviewer_1_verdict": "matched",
+      "reviewer_2_verdict": "matched"
+    },
+    {
+      "id": "def:local-minimax",
+      "reviewer_1_verdict": "matched",
+      "reviewer_2_verdict": "matched"
+    },
+    {
+      "id": "def:matrix-blocks",
+      "reviewer_1_verdict": "matched",
+      "reviewer_2_verdict": "matched"
+    },
+    {
+      "id": "def:matrix-estimators",
+      "reviewer_1_verdict": "matched",
+      "reviewer_2_verdict": "matched"
+    },
+    {
+      "id": "def:matrix-local-minimax",
+      "reviewer_1_verdict": "matched",
+      "reviewer_2_verdict": "matched"
+    },
+    {
+      "id": "def:matrix-notation",
+      "reviewer_1_verdict": "matched",
+      "reviewer_2_verdict": "matched"
+    },
+    {
+      "id": "def:nondegenerate-laws",
+      "reviewer_1_verdict": "matched",
+      "reviewer_2_verdict": "matched"
+    },
+    {
+      "id": "def:nondegenerate-second-moments",
+      "reviewer_1_verdict": "matched",
+      "reviewer_2_verdict": "matched"
+    },
+    {
+      "id": "def:optimal-predictor",
+      "reviewer_1_verdict": "matched",
+      "reviewer_2_verdict": "matched"
+    },
+    {
+      "id": "def:parameter-domain",
+      "reviewer_1_verdict": "matched",
+      "reviewer_2_verdict": "matched"
+    },
+    {
+      "id": "def:parameter-map",
+      "reviewer_1_verdict": "matched",
+      "reviewer_2_verdict": "matched"
+    },
+    {
+      "id": "def:population-estimators",
+      "reviewer_1_verdict": "matched",
+      "reviewer_2_verdict": "matched"
+    },
+    {
+      "id": "def:predictor-space",
+      "reviewer_1_verdict": "matched",
+      "reviewer_2_verdict": "matched"
+    },
+    {
+      "id": "def:quadratic-regression-matrix",
+      "reviewer_1_verdict": "matched",
+      "reviewer_2_verdict": "matched"
+    },
+    {
+      "id": "def:regression-norms",
+      "reviewer_1_verdict": "matched",
+      "reviewer_2_verdict": "matched"
+    },
+    {
+      "id": "def:regret",
+      "reviewer_1_verdict": "matched",
+      "reviewer_2_verdict": "matched"
+    },
+    {
+      "id": "def:residual-second-moment",
+      "reviewer_1_verdict": "matched",
+      "reviewer_2_verdict": "matched"
+    },
+    {
+      "id": "def:risk",
+      "reviewer_1_verdict": "matched",
+      "reviewer_2_verdict": "matched"
+    },
+    {
+      "id": "def:robust-regret",
+      "reviewer_1_verdict": "matched",
+      "reviewer_2_verdict": "matched"
+    },
+    {
+      "id": "def:second-moment",
+      "reviewer_1_verdict": "matched",
+      "reviewer_2_verdict": "matched"
+    },
+    {
+      "id": "def:wasserstein-ball",
+      "reviewer_1_verdict": "matched",
+      "reviewer_2_verdict": "matched"
+    },
+    {
+      "id": "def:wasserstein-distance",
+      "reviewer_1_verdict": "matched",
+      "reviewer_2_verdict": "matched"
+    },
+    {
+      "id": "def:well-conditioned-family",
+      "reviewer_1_verdict": "matched",
+      "reviewer_2_verdict": "matched"
+    },
+    {
+      "id": "lem:alt-condition-number-closed-form",
+      "reviewer_1_verdict": "matched",
+      "reviewer_2_verdict": "matched"
+    },
+    {
+      "id": "lem:alt-condition-number-formula",
+      "reviewer_1_verdict": "matched",
+      "reviewer_2_verdict": "matched"
+    },
+    {
+      "id": "lem:basic-matrix-norms",
+      "reviewer_1_verdict": "matched",
+      "reviewer_2_verdict": "matched"
+    },
+    {
+      "id": "lem:bures-lambda-min-continuity",
+      "reviewer_1_verdict": "matched",
+      "reviewer_2_verdict": "matched"
+    },
+    {
+      "id": "lem:bures-procrustes",
+      "reviewer_1_verdict": "matched",
+      "reviewer_2_verdict": "matched"
+    },
+    {
+      "id": "lem:bures-procrustes-cited-identity",
+      "reviewer_1_verdict": "matched",
+      "reviewer_2_verdict": "matched"
+    },
+    {
+      "id": "lem:condition-number-comparison-lb",
+      "reviewer_1_verdict": "matched",
+      "reviewer_2_verdict": "matched"
+    },
+    {
+      "id": "lem:condition-number-comparison-ub",
+      "reviewer_1_verdict": "matched",
+      "reviewer_2_verdict": "matched"
+    },
+    {
+      "id": "lem:dro-lb-a",
+      "reviewer_1_verdict": "matched",
+      "reviewer_2_verdict": "matched"
+    },
+    {
+      "id": "lem:dro-lb-b",
+      "reviewer_1_verdict": "matched",
+      "reviewer_2_verdict": "matched"
+    },
+    {
+      "id": "lem:dro-minimax",
+      "reviewer_1_verdict": "matched",
+      "reviewer_2_verdict": "matched"
+    },
+    {
+      "id": "lem:dro-rank-adaptive",
+      "reviewer_1_verdict": "matched",
+      "reviewer_2_verdict": "matched"
+    },
+    {
+      "id": "lem:dro-regularizer",
+      "reviewer_1_verdict": "matched",
+      "reviewer_2_verdict": "matched"
+    },
+    {
+      "id": "lem:dro-symmetry",
+      "reviewer_1_verdict": "matched",
+      "reviewer_2_verdict": "matched"
+    },
+    {
+      "id": "lem:elementary-scalar-ineqs",
+      "reviewer_1_verdict": "matched",
+      "reviewer_2_verdict": "matched"
+    },
+    {
+      "id": "lem:factor-perturbation",
+      "reviewer_1_verdict": "matched",
+      "reviewer_2_verdict": "matched"
+    },
+    {
+      "id": "lem:factor-perturbation-cited-inequality",
+      "reviewer_1_verdict": "matched",
+      "reviewer_2_verdict": "matched"
+    },
+    {
+      "id": "lem:inner-dro-strong-duality",
+      "reviewer_1_verdict": "matched",
+      "reviewer_2_verdict": "matched"
+    },
+    {
+      "id": "lem:kronecker-fact",
+      "reviewer_1_verdict": "matched",
+      "reviewer_2_verdict": "matched"
+    },
+    {
+      "id": "lem:lemma-34",
+      "reviewer_1_verdict": "matched",
+      "reviewer_2_verdict": "matched"
+    },
+    {
+      "id": "lem:lemma-37",
+      "reviewer_1_verdict": "matched",
+      "reviewer_2_verdict": "matched"
+    },
+    {
+      "id": "lem:minimax-lb",
+      "reviewer_1_verdict": "matched",
+      "reviewer_2_verdict": "matched"
+    },
+    {
+      "id": "lem:parameter-map-derivative",
+      "reviewer_1_verdict": "matched",
+      "reviewer_2_verdict": "matched"
+    },
+    {
+      "id": "lem:perturbed-condition-number",
+      "reviewer_1_verdict": "matched",
+      "reviewer_2_verdict": "matched"
+    },
+    {
+      "id": "lem:pseudoinverse-projection-facts",
+      "reviewer_1_verdict": "matched",
+      "reviewer_2_verdict": "matched"
+    },
+    {
+      "id": "lem:quadratic-ball-duality",
+      "reviewer_1_verdict": "matched",
+      "reviewer_2_verdict": "matched"
+    },
+    {
+      "id": "lem:quadratic-ball-s-lemma",
+      "reviewer_1_verdict": "matched",
+      "reviewer_2_verdict": "matched"
+    },
+    {
+      "id": "lem:rectangular-resolvent-identities",
+      "reviewer_1_verdict": "matched",
+      "reviewer_2_verdict": "matched"
+    },
+    {
+      "id": "lem:regret-projection-formula",
+      "reviewer_1_verdict": "matched",
+      "reviewer_2_verdict": "matched"
+    },
+    {
+      "id": "lem:regret-stability",
+      "reviewer_1_verdict": "matched",
+      "reviewer_2_verdict": "matched"
+    },
+    {
+      "id": "lem:regret-stability-refined",
+      "reviewer_1_verdict": "matched",
+      "reviewer_2_verdict": "matched"
+    },
+    {
+      "id": "lem:rescaling-invariance",
+      "reviewer_1_verdict": "matched",
+      "reviewer_2_verdict": "matched"
+    },
+    {
+      "id": "lem:sin-thm-variant",
+      "reviewer_1_verdict": "matched",
+      "reviewer_2_verdict": "matched"
+    },
+    {
+      "id": "lem:stability-implications",
+      "reviewer_1_verdict": "matched",
+      "reviewer_2_verdict": "matched"
+    },
+    {
+      "id": "lem:stability-implications-dro",
+      "reviewer_1_verdict": "matched",
+      "reviewer_2_verdict": "matched"
+    },
+    {
+      "id": "lem:stability-implications-erm",
+      "reviewer_1_verdict": "matched",
+      "reviewer_2_verdict": "matched"
+    },
+    {
+      "id": "lem:w2-bures-block-contraction",
+      "reviewer_1_verdict": "matched",
+      "reviewer_2_verdict": "matched"
+    },
+    {
+      "id": "lem:w2-bures-equivalence",
+      "reviewer_1_verdict": "matched",
+      "reviewer_2_verdict": "matched"
+    },
+    {
+      "id": "sym:A",
+      "reviewer_1_verdict": "matched",
+      "reviewer_2_verdict": "matched"
+    },
+    {
+      "id": "sym:B",
+      "reviewer_1_verdict": "matched",
+      "reviewer_2_verdict": "matched"
+    },
+    {
+      "id": "sym:J_\\bSigma",
+      "reviewer_1_verdict": "matched",
+      "reviewer_2_verdict": "matched"
+    },
+    {
+      "id": "sym:R_\\eps",
+      "reviewer_1_verdict": "matched",
+      "reviewer_2_verdict": "matched"
+    },
+    {
+      "id": "sym:R_\\eps^\\star",
+      "reviewer_1_verdict": "matched",
+      "reviewer_2_verdict": "matched"
+    },
+    {
+      "id": "sym:\\Gamma_P",
+      "reviewer_1_verdict": "matched",
+      "reviewer_2_verdict": "matched"
+    },
+    {
+      "id": "sym:\\Wtwo",
+      "reviewer_1_verdict": "matched",
+      "reviewer_2_verdict": "matched"
+    },
+    {
+      "id": "sym:\\delta",
+      "reviewer_1_verdict": "matched",
+      "reviewer_2_verdict": "matched"
+    },
+    {
+      "id": "sym:\\eps",
+      "reviewer_1_verdict": "matched",
+      "reviewer_2_verdict": "matched"
+    },
+    {
+      "id": "sym:\\gamma",
+      "reviewer_1_verdict": "matched",
+      "reviewer_2_verdict": "matched"
+    },
+    {
+      "id": "sym:\\kappa",
+      "reviewer_1_verdict": "matched",
+      "reviewer_2_verdict": "matched"
+    },
+    {
+      "id": "sym:\\kappa(\\bSigma)",
+      "reviewer_1_verdict": "matched",
+      "reviewer_2_verdict": "matched"
+    },
+    {
+      "id": "sym:\\kappa_P",
+      "reviewer_1_verdict": "matched",
+      "reviewer_2_verdict": "matched"
+    },
+    {
+      "id": "sym:\\lambda",
+      "reviewer_1_verdict": "matched",
+      "reviewer_2_verdict": "matched"
+    },
+    {
+      "id": "sym:\\mu",
+      "reviewer_1_verdict": "matched",
+      "reviewer_2_verdict": "matched"
+    },
+    {
+      "id": "sym:\\reff",
+      "reviewer_1_verdict": "matched",
+      "reviewer_2_verdict": "matched"
+    },
+    {
+      "id": "sym:\\tilde{\\kappa}",
+      "reviewer_1_verdict": "matched",
+      "reviewer_2_verdict": "matched"
+    },
+    {
+      "id": "sym:b",
+      "reviewer_1_verdict": "matched",
+      "reviewer_2_verdict": "matched"
+    },
+    {
+      "id": "sym:r_i^2",
+      "reviewer_1_verdict": "matched",
+      "reviewer_2_verdict": "matched"
+    },
+    {
+      "id": "thm:condition-number-formula",
+      "reviewer_1_verdict": "matched",
+      "reviewer_2_verdict": "matched"
+    },
+    {
+      "id": "thm:dro-strong-duality-diagonal",
+      "reviewer_1_verdict": "matched",
+      "reviewer_2_verdict": "matched"
+    },
+    {
+      "id": "thm:pop-limit-risk-bds",
+      "reviewer_1_verdict": "matched",
+      "reviewer_2_verdict": "matched"
+    }
+  ],
+  "unreviewed_targets": [],
+  "note": "Historical automated statement-review verdicts, separate from Lean kernel checking. Raw prompts, transcripts and private review logs are omitted."
+}
